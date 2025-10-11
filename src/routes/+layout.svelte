@@ -9,6 +9,7 @@
 </svelte:head>
 
 <footer>
+    <span style="color: #bbb;">search powered by</span>
     <a href="https://unduck.link">unduck.link</a>
     <span class="seperator">•</span>
     <a href="https://github.com/gabors0/unduck-startpage">github</a>

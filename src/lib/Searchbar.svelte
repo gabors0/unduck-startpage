@@ -1,5 +1,4 @@
 <script>
-    import { onMount } from "svelte";
     let query = "";
     let searchBtn;
 
@@ -26,8 +25,8 @@
     />
     <button
         class="searchBtn"
-        aria-label="Search"
-        title="Search"
+        aria-label="Search..."
+        title="Search..."
         bind:this={searchBtn}
         on:click={search}
     >
@@ -57,11 +56,15 @@
         border: none;
         background-color: #191919;
         border: 1px solid #333;
-        color: #fff;
+        color: #eee;
         font-size: 1.2rem;
         border-radius: 5px;
         padding: 0.5rem;
         margin-right: 10px;
+    }
+    input:focus {
+        background-color: #333;
+        border: 1px solid #333;
     }
     .searchBtn {
         display: flex;
@@ -73,11 +76,12 @@
         padding: 3px;
         height: 3rem;
         width: 3rem;
+        cursor: pointer;
     }
     .searchBtn:hover {
         background-color: #555555;
     }
     svg {
-        fill: #fff;
+        fill: #eee;
     }
 </style>
