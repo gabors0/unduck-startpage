@@ -4,7 +4,7 @@
 
 **Todo**
 - [x] Basic functionality
-- [ ] Host
+- [x] Host
 - [ ] Mobile support
 - [ ] Bang suggestions/display
 - [ ] Search suggestions
