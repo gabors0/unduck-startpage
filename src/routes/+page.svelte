@@ -1,17 +1,8 @@
-<script>
+<script lang="ts">
     import Searchbar from "../lib/Searchbar.svelte";
 </script>
 
-<div>
-    <h1>Und*ck</h1>
+<div class="flex flex-col justify-center items-center">
+    <h1 class="font-semibold text-4xl">Und*ck</h1>
     <Searchbar />
 </div>
-
-<style>
-    div {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-</style>

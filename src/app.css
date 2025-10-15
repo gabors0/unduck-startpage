@@ -1,0 +1,18 @@
+@import 'tailwindcss';
+
+a {
+    color: #bbb;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #eee;
+}
+
+a:active {
+    color: #ccc;
+}
+
+.svgIcon {
+    fill: #fff;
+}

@@ -12,9 +12,10 @@
     };
 </script>
 
-<div class="searchBar">
+<div class="searchBar flex items-center justify-between w-120 mx-0 my-5 h-auto">
     <!-- svelte-ignore a11y_autofocus -->
     <input
+        class="w-1/1 h-12 border-0 text-xl rounded-md mr-3 p-2 py-4"
         autofocus
         type="text"
         placeholder="search..."
@@ -24,7 +25,7 @@
         bind:value={query}
     />
     <button
-        class="searchBtn"
+        class="searchBtn flex items-center justify-center rounded-md bg-transparent border-0 p-1 h-12 w-12 cursor-pointer"
         aria-label="Search..."
         title="Search..."
         bind:this={searchBtn}
@@ -42,41 +43,14 @@
 </div>
 
 <style>
-    .searchBar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 36rem;
-        margin: 0 30px;
-        height: auto;
-    }
     input {
-        width: 100%;
-        height: 2rem;
-        border: none;
         background-color: #191919;
         border: 1px solid #333;
         color: #eee;
-        font-size: 1.2rem;
-        border-radius: 5px;
-        padding: 0.5rem;
-        margin-right: 10px;
     }
     input:focus {
         background-color: #333;
-        border: 1px solid #333;
-    }
-    .searchBtn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 5px;
-        background-color: transparent;
-        border: none;
-        padding: 3px;
-        height: 3rem;
-        width: 3rem;
-        cursor: pointer;
+        outline: 2px solid #059a88;
     }
     .searchBtn:hover {
         background-color: #555555;
