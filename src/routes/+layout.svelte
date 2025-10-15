@@ -10,7 +10,7 @@
 </svelte:head>
 
 <footer class="absolute bottom-0 left-0 p-5">  
-    <span style="color: #bbb;">search powered by</span>
+    <span>search powered by</span>
     <a href="https://unduck.link">unduck.link</a>
     <span class="seperator select-none">•</span>
     <a href="https://github.com/gabors0/unduck-startpage">github</a>
@@ -28,6 +28,10 @@
         height: 100vh;
         overflow: hidden;
     }
+    :global(::selection) {
+        background: #059a88;
+        color: #191919;
+    }
     :global(a) {
         color: #bbb;
         text-decoration: none;
@@ -38,8 +42,15 @@
     :global(a:active) {
         color: #ccc;
     }
+    :global(*:focus) {
+    background-color: #333;
+    outline: 2px solid #059a88;
+    }
     :global(.svgIcon) {
         fill: #fff;
+    }
+    span {
+        color: #bbb;
     }
     .seperator {
         color: #bbb;

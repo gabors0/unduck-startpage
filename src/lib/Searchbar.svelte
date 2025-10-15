@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     let query = "";
     let searchBtn;
 
@@ -47,10 +47,6 @@
         background-color: #191919;
         border: 1px solid #333;
         color: #eee;
-    }
-    input:focus {
-        background-color: #333;
-        outline: 2px solid #059a88;
     }
     .searchBtn:hover {
         background-color: #555555;

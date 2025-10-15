@@ -3,6 +3,12 @@
 </script>
 
 <div class="flex flex-col justify-center items-center">
-    <h1 class="font-semibold text-4xl">Und*ck</h1>
+    <pre class="font-bold font-mono select-none text-xs">
+                             _/                      _/      
+  _/    _/  _/_/_/      _/_/_/  _/    _/    _/_/_/  _/  _/   
+ _/    _/  _/    _/  _/    _/  _/    _/  _/        _/_/      
+_/    _/  _/    _/  _/    _/  _/    _/  _/        _/  _/     
+ _/_/_/  _/    _/    _/_/_/    _/_/_/    _/_/_/  _/    _/       
+</pre>
     <Searchbar />
 </div>
