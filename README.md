@@ -5,7 +5,7 @@
 **Todo**
 - [x] Basic functionality
 - [x] Host
-- [ ] Mobile support
+- [x] Mobile support
 - [ ] Bang suggestions/display
 - [ ] Search suggestions
 - [ ] Ability to select default bang

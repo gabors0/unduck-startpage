@@ -12,7 +12,7 @@
     };
 </script>
 
-<div class="searchBar flex items-center justify-between w-120 mx-0 my-5 h-auto">
+<div class="searchBar flex items-center justify-between my-5 w-[calc(100vw-5%)] h-auto sm:mx-0 sm:w-120 sm:w-max-120 ">
     <!-- svelte-ignore a11y_autofocus -->
     <input
         class="w-1/1 h-12 border-0 text-xl rounded-md mr-3 p-2 py-4"

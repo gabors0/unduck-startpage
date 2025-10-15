@@ -9,7 +9,7 @@
     <link rel="icon" href={favicon} />
 </svelte:head>
 
-<footer class="absolute bottom-0 left-0 p-5">  
+<footer class="absolute top-0 left-0 p-5">  
     <span>search powered by</span>
     <a href="https://unduck.link">unduck.link</a>
     <span class="seperator select-none">•</span>
