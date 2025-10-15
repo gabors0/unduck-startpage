@@ -2,6 +2,8 @@
     import "../app.css";
     import favicon from "$lib/assets/favicon.svg";
     
+    let isOn = $state(false)
+
     let { children } = $props();
 </script>
 
@@ -14,6 +16,15 @@
     <a href="https://unduck.link">unduck.link</a>
     <span class="seperator select-none">•</span>
     <a href="https://github.com/gabors0/unduck-startpage">github</a>
+    <button onclick={() => isOn = !isOn}>open</button>
+
+    {#if isOn}
+    <div class="mt-5">
+        <span>defualt bang</span>
+        <input type="text" placeholder="!g" class="border-0 rounded-md p-2">
+        <button class="p-2 rounded-md hover:bg-neutral-600">Save</button>
+    </div>
+    {/if}
 </footer>
 
 {@render children?.()}
@@ -46,8 +57,17 @@
     background-color: #333;
     outline: 2px solid #059a88;
     }
+    :global(button:active, input:active) {
+        background-color: #454545;
+        outline: 2px solid #059a88;
+    }
     :global(.svgIcon) {
         fill: #fff;
+    }
+    input {
+        background-color: #191919;
+        border: 1px solid #333;
+        color: #eee;
     }
     span {
         color: #bbb;
