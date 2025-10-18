@@ -54,21 +54,8 @@
     :global(a:active) {
         color: #ccc;
     }
-    :global(*:focus) {
-        background-color: #333;
-        outline: 2px solid #059a88;
-    }
-    :global(button:active, input:active) {
-        background-color: #454545;
-        outline: 2px solid #059a88;
-    }
     :global(.svgIcon) {
         fill: #eee;
-    }
-    input {
-        background-color: #191919;
-        border: 1px solid #333;
-        color: #eee;
     }
     span {
         color: #bbb;

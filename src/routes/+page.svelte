@@ -1,10 +1,10 @@
 <script lang="ts">
     import Searchbar from "../lib/Searchbar.svelte";
-    import Settings from "../lib/OptionsMenu.svelte";
+    import OptionsMenu from "../lib/OptionsMenu.svelte";
 </script>
 
 <div class="flex flex-col justify-center items-center">
-    <Settings />
+    <OptionsMenu />
     <pre class="hidden sm:block font-bold font-mono select-none text-xs">
                              _/                      _/
   _/    _/  _/_/_/      _/_/_/  _/    _/    _/_/_/  _/  _/

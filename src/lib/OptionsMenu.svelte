@@ -3,6 +3,9 @@
     let isOn = $state(false);
     let defaultBang = $state("!g");
     let input = $state("");
+    let isUnsuccessful = $state(false);
+    let isSuccessful = $state(false);
+    
 
     onMount(() => {
         const stored = localStorage.getItem("defaultBang");
@@ -19,9 +22,17 @@
         ) {
             console.error("default bang is invalid");
             input = "";
+            isUnsuccessful = true;
+            setTimeout(() => {
+                isUnsuccessful = false;
+            }, 1000);
             return;
         }
         defaultBang = value;
+        isSuccessful = true;
+        setTimeout(() => {
+            isSuccessful = false;
+        }, 1000);
         localStorage.setItem("defaultBang", value);
         console.log("Default bang set to:", defaultBang);
     }
@@ -39,6 +50,8 @@
             >
             <input
                 bind:value={input}
+                class:success={isSuccessful}
+                class:error={isUnsuccessful}
                 type="text"
                 placeholder={defaultBang}
                 class="border-0 rounded-md p-2"
@@ -57,10 +70,13 @@
             >
         </div>
     {/if}
-    <button onclick={() => (isOn = !isOn)} class="w-6 h-6">
+    <button
+        onclick={() => (isOn = !isOn)}
+        class="max-w-8 max-h-8 p-1 rounded-sm"
+    >
         {#if !isOn}
             <svg
-                class="svgIcon w-max h-max"
+                class="svgIcon w-6 h-6"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 640 640"
                 ><!--!Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path
@@ -70,7 +86,7 @@
         {/if}
         {#if isOn}
             <svg
-                class="svgIcon w-max h-max"
+                class="svgIcon w-6 h-6"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 640 640"
                 ><!--!Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path
@@ -81,9 +97,23 @@
 </div>
 
 <style>
+    button:hover {
+        background-color: #555;
+    }
     input {
         background-color: #191919;
         border: 1px solid #333;
         color: #eee;
+    }
+    input:focus {
+        outline: 2px solid #059a88;
+    }
+    input.success {
+        background-color: #002300;
+        outline: 2px solid #006500;
+    }
+    input.error {
+        background-color: #230000;
+        outline: 2px solid #850000;
     }
 </style>
