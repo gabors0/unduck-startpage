@@ -6,7 +6,7 @@
 - [x] Basic functionality
 - [x] Host
 - [x] Mobile support
-- [ ] Bang suggestions/display
-- [ ] Search suggestions
-- [ ] Ability to select default bang
+- [x] Ability to select default bang
 - [ ] Themes
+- [ ] Search suggestions
+- [ ] Bang suggestions/display
