@@ -30,11 +30,12 @@
 </script>
 
 <div
-    class="OptionsMenu absolute flex flex-row space-x-4 top-0 right-0 m-2 p-3 rounded-md"
-    style:background-color={isOn ? "#222" : "transparent"}
+    class="OptionsMenu z-99 absolute flex flex-row justify-end w-auto sm:max-w-512 top-2 right-2 left-2 sm:left-auto mb-2 p-3 rounded-md"
+    style:outline={isOn ? "1px solid #444" : "none"}
 >
-    {#if isOn} 
-        <div class="space-x-2"> <!--default bang entry-->
+    {#if isOn}
+        <div class="mr-auto space-x-2">
+            <!--default bang entry-->
             <span
                 title={`the website to search with by default. starts with "!". default is "!g" for Google.`}
                 class="cursor-help py-3">default bang</span
@@ -47,17 +48,19 @@
                 placeholder={$selectedBang}
                 class="border-0 rounded-md p-2"
             />
-            <button
-                onclick={() => setDefaultBang(input)}
-                class="p-2 rounded-md hover:bg-neutral-600">Save</button
-            >
-            <button
-                onclick={() => {
-                    selectedBang.set("!g");
-                    input = "";
-                }}
-                class="p-2 rounded-md hover:bg-neutral-600">Reset</button
-            >
+            <div class="mt-2">
+                <button
+                    onclick={() => setDefaultBang(input)}
+                    class="p-2 rounded-md hover:bg-neutral-600">Save</button
+                >
+                <button
+                    onclick={() => {
+                        selectedBang.set("!g");
+                        input = "";
+                    }}
+                    class="p-2 rounded-md hover:bg-neutral-600">Reset</button
+                >
+            </div>
         </div>
     {/if}
     <button
@@ -65,7 +68,7 @@
         class="max-w-8 max-h-8 p-1 rounded-sm"
     >
         {#if !isOn}
-            <svg 
+            <svg
                 class="svgIcon w-6 h-6"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 640 640"

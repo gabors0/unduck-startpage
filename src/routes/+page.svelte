@@ -5,13 +5,12 @@
 
 <div class="flex flex-col justify-center items-center">
     <OptionsMenu />
-    <pre class="hidden sm:block font-bold font-mono select-none text-xs">
+    <pre class="font-bold font-[monospace] select-none text-[8px] sm:text-xs">
                              _/                      _/
   _/    _/  _/_/_/      _/_/_/  _/    _/    _/_/_/  _/  _/
  _/    _/  _/    _/  _/    _/  _/    _/  _/        _/_/
 _/    _/  _/    _/  _/    _/  _/    _/  _/        _/  _/
  _/_/_/  _/    _/    _/_/_/    _/_/_/    _/_/_/  _/    _/
 </pre>
-    <h1 class="sm:hidden text-4xl">unduck</h1>
     <Searchbar />
 </div>
