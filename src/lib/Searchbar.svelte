@@ -1,11 +1,16 @@
 <script lang="ts">
+    import { selectedBang } from "$lib/stores/options";
+
     let query = "";
     let searchBtn;
 
     const search = () => {
         if (query) {
+            const hasBang = /!\w+/.test(query);
+            const searchQuery = hasBang ? query : `${$selectedBang} ${query}`;
+
             window.location.assign(
-                `https://unduck.link?q=${encodeURIComponent(query)}`,
+                `https://unduck.link?q=${encodeURIComponent(searchQuery)}`,
             );
         } else console.warn("The search query is empty");
     };
