@@ -1,5 +1,6 @@
 <script lang="ts">
     import { selectedBang } from "$lib/stores/options";
+    import { theme, type Theme } from "$lib/stores/theme";
     let isOn = $state(false);
     let input = $state("");
     let isUnsuccessful = $state(false);
@@ -30,36 +31,79 @@
 </script>
 
 <div
-    class="OptionsMenu z-99 absolute flex flex-row justify-end w-auto sm:max-w-512 top-2 right-2 left-2 sm:left-auto mb-2 p-3 rounded-md"
+    class="OptionsMenu z-99 absolute flex flex-row justify-end w-auto sm:w-128 top-2 right-2 left-2 sm:left-auto mb-2 p-3 rounded-md"
     style:outline={isOn ? "1px solid #444" : "none"}
 >
     {#if isOn}
-        <div class="mr-auto space-x-2">
+        <div class="mr-auto space-y-4">
+            <!--theme entry-->
+            <div>
+                <span class="py-3 block mb-2">theme</span>
+                <div class="flex gap-x-4">
+                    <label class="flex items-center cursor-pointer">
+                        <input
+                            type="radio"
+                            name="theme"
+                            value="light"
+                            checked={$theme === "light"}
+                            onchange={() => theme.set("light")}
+                            class="cursor-pointer hidden"
+                        />
+                        <span class:underline={$theme === "light"}>light</span>
+                    </label>
+                    <label class="flex items-center cursor-pointer">
+                        <input
+                            type="radio"
+                            name="theme"
+                            value="dark"
+                            checked={$theme === "dark"}
+                            onchange={() => theme.set("dark")}
+                            class="cursor-pointer hidden"
+                        />
+                        <span class:underline={$theme === "dark"}>dark</span>
+                    </label>
+                    <label class="flex items-center cursor-pointer">
+                        <input
+                            type="radio"
+                            name="theme"
+                            value="system"
+                            checked={$theme === "system"}
+                            onchange={() => theme.set("system")}
+                            class="cursor-pointer hidden"
+                        />
+                        <span class:underline={$theme === "system"}>system</span>
+                    </label>
+                </div>
+            </div>
+
             <!--default bang entry-->
-            <span
-                title={`the website to search with by default. starts with "!". default is "!g" for Google.`}
-                class="cursor-help py-3">default bang</span
-            >
-            <input
-                bind:value={input}
-                class:success={isSuccessful}
-                class:error={isUnsuccessful}
-                type="text"
-                placeholder={$selectedBang}
-                class="border-0 rounded-md p-2"
-            />
-            <div class="mt-2">
-                <button
-                    onclick={() => setDefaultBang(input)}
-                    class="p-2 rounded-md hover:bg-neutral-600">Save</button
+            <div>
+                <span
+                    title={`the website to search with by default. starts with "!". default is "!g" for Google.`}
+                    class="cursor-help py-3 block mb-2">default bang</span
                 >
-                <button
-                    onclick={() => {
-                        selectedBang.set("!g");
-                        input = "";
-                    }}
-                    class="p-2 rounded-md hover:bg-neutral-600">Reset</button
-                >
+                <input
+                    bind:value={input}
+                    class:success={isSuccessful}
+                    class:error={isUnsuccessful}
+                    type="text"
+                    placeholder={$selectedBang}
+                    class="border-0 rounded-md p-2 transition-[outline] duration-50"
+                />
+                <div class="mt-2">
+                    <button
+                        onclick={() => setDefaultBang(input)}
+                        class="p-2 rounded-md hover:bg-neutral-600">Save</button
+                    >
+                    <button
+                        onclick={() => {
+                            selectedBang.set("!g");
+                            input = "";
+                        }}
+                        class="p-2 rounded-md hover:bg-neutral-600"
+                        >Reset</button
+                    >
+                </div>
             </div>
         </div>
     {/if}
@@ -90,11 +134,14 @@
 </div>
 
 <style lang="postcss">
+    @reference "../app.css";
     input.success {
-        @reference "../app.css";
         @apply outline-green-700 outline-3 dark:outline-green-600;
     }
     input.error {
         @apply outline-red-700 outline-3 dark:outline-red-700;
+    }
+    span {
+        @apply text-zinc-900 dark:text-zinc-100;
     }
 </style>
