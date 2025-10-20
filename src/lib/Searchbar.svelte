@@ -47,20 +47,3 @@
         >
     </button>
 </div>
-
-<style>
-    input {
-        background-color: #191919;
-        border: 1px solid #333;
-        color: #eee;
-    }
-    input:focus {
-        outline: 2px solid #059a88;
-    }
-    .searchBtn:hover {
-        background-color: #555555;
-    }
-    svg {
-        fill: #eee;
-    }
-</style>

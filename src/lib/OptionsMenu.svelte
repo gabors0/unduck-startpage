@@ -89,24 +89,12 @@
     </button>
 </div>
 
-<style>
-    button:hover {
-        background-color: #555;
-    }
-    input {
-        background-color: #191919;
-        border: 1px solid #333;
-        color: #eee;
-    }
-    input:focus {
-        outline: 2px solid #059a88;
-    }
+<style lang="postcss">
     input.success {
-        background-color: #002300;
-        outline: 2px solid #006500;
+        @reference "../app.css";
+        @apply outline-green-700 outline-3 dark:outline-green-600;
     }
     input.error {
-        background-color: #230000;
-        outline: 2px solid #850000;
+        @apply outline-red-700 outline-3 dark:outline-red-700;
     }
 </style>
