@@ -7,6 +7,7 @@
 
 <svelte:head>
     <link rel="icon" href={favicon} />
+    <title>search</title>
 </svelte:head>
 
 <footer class="absolute bottom-0 left-0 p-5">
