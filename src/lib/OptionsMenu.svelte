@@ -39,7 +39,7 @@
             <div class="mr-auto space-y-4">
                 <!--theme entry-->
                 <div class="flex flex-col sm:flex-row sm:items-center gap-x-4">
-                    <span class="py-3">theme</span>
+                    <span class="py-3 font-bold">theme</span>
                     <div class="flex gap-x-4">
                         <label class="flex items-center cursor-pointer">
                             <input
@@ -84,7 +84,7 @@
 
                 <!--suggestions entry-->
                 <div class="flex flex-col sm:flex-row sm:items-center gap-x-4">
-                    <span class="py-3 cursor-help" title="uses duckduckgo">show search suggestions</span>
+                    <span class="py-3 cursor-help font-bold" title="uses duckduckgo">show search suggestions</span>
                     <div class="flex gap-x-4">
                         <label class="flex items-center cursor-pointer">
                             <input
@@ -116,7 +116,7 @@
                 >
                     <span
                         title={`the website to search with by default. starts with "!". default is "!g" for Google.`}
-                        class="cursor-help py-3 sm:whitespace-nowrap"
+                        class="cursor-help py-3 sm:whitespace-nowrap font-bold"
                         >default bang</span
                     >
                     <input
@@ -179,6 +179,6 @@
         @apply outline-red-700 outline-3 dark:outline-red-700;
     }
     span {
-        @apply text-zinc-900 dark:text-zinc-100;
+        @apply text-zinc-600 dark:text-zinc-300;
     }
 </style>

@@ -7,6 +7,7 @@
 - [x] Host
 - [x] Mobile support
 - [x] Ability to select default bang
-- [ ] Themes
-- [ ] Search suggestions
+- [x] Themes
+- [x] Search suggestions
+- [ ] Simplify styles
 - [ ] Bang suggestions/display
