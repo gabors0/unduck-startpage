@@ -56,7 +56,7 @@
     :global(.searchBtn:hover > .svgIcon) {
         @apply fill-accent;
     }
-    :global(input) {
+    :global(input[type="text"]) {
         @apply bg-zinc-200 dark:bg-zinc-900 outline outline-zinc-700 text-zinc-900 dark:text-zinc-100;
     }
     :global(input:focus) {

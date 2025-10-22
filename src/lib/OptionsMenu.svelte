@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { selectedBang } from "$lib/stores/options";
+    import { selectedBang, useSuggestions } from "$lib/stores/options";
     import { theme, type Theme } from "$lib/stores/theme";
     let isOn = $state(false);
     let input = $state("");
@@ -82,6 +82,34 @@
                     </div>
                 </div>
 
+                <!--suggestions entry-->
+                <div class="flex flex-col sm:flex-row sm:items-center gap-x-4">
+                    <span class="py-3 cursor-help" title="uses duckduckgo">show search suggestions</span>
+                    <div class="flex gap-x-4">
+                        <label class="flex items-center cursor-pointer">
+                            <input
+                                type="radio"
+                                name="useSuggestions"
+                                value="yes"
+                                onchange={() => useSuggestions.set(true)}
+                                class="cursor-pointer hidden"
+                            />
+                            <span class:underline={$useSuggestions === true}>yes</span
+                            >
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input
+                                type="radio"
+                                name="useSuggestions"
+                                value="no"
+                                onchange={() => useSuggestions.set(false)}
+                                class="cursor-pointer hidden"
+                            />
+                            <span class:underline={$useSuggestions === false}>no</span>
+                        </label>
+                    </div>
+                </div>
+
                 <!--default bang entry-->
                 <div
                     class="flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-2"
@@ -102,16 +130,14 @@
                     <div class="flex gap-x-2">
                         <button
                             onclick={() => setDefaultBang(input)}
-                            class="p-2 cursor-pointer"
-                            >Save</button
+                            class="p-2 cursor-pointer">Save</button
                         >
                         <button
                             onclick={() => {
                                 selectedBang.set("!g");
                                 input = "";
                             }}
-                            class="p-2 cursor-pointer"
-                            >Reset</button
+                            class="p-2 cursor-pointer">Reset</button
                         >
                     </div>
                 </div>
