@@ -53,11 +53,17 @@
     :global(.svgIcon) {
         @apply fill-zinc-900 dark:fill-zinc-100;
     }
-    :global(input) {
+    :global(.searchBtn:hover > .svgIcon) {
+        @apply fill-accent;
+    }
+    :global(input[type="text"]) {
         @apply bg-zinc-200 dark:bg-zinc-900 outline outline-zinc-700 text-zinc-900 dark:text-zinc-100;
     }
     :global(input:focus) {
         @apply outline-accent outline-2;
+    }
+    :global(button:hover, label > span:hover) {
+        @apply text-accent;
     }
     span {
         @apply text-zinc-400 dark:text-zinc-500;

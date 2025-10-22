@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { selectedBang } from "$lib/stores/options";
+    import { selectedBang, useSuggestions } from "$lib/stores/options";
     import { theme, type Theme } from "$lib/stores/theme";
     let isOn = $state(false);
     let input = $state("");
@@ -39,7 +39,7 @@
             <div class="mr-auto space-y-4">
                 <!--theme entry-->
                 <div class="flex flex-col sm:flex-row sm:items-center gap-x-4">
-                    <span class="py-3">theme</span>
+                    <span class="py-3 font-bold">theme</span>
                     <div class="flex gap-x-4">
                         <label class="flex items-center cursor-pointer">
                             <input
@@ -82,13 +82,41 @@
                     </div>
                 </div>
 
+                <!--suggestions entry-->
+                <div class="flex flex-col sm:flex-row sm:items-center gap-x-4">
+                    <span class="py-3 cursor-help font-bold" title="uses duckduckgo">show search suggestions</span>
+                    <div class="flex gap-x-4">
+                        <label class="flex items-center cursor-pointer">
+                            <input
+                                type="radio"
+                                name="useSuggestions"
+                                value="yes"
+                                onchange={() => useSuggestions.set(true)}
+                                class="cursor-pointer hidden"
+                            />
+                            <span class:underline={$useSuggestions === true}>yes</span
+                            >
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input
+                                type="radio"
+                                name="useSuggestions"
+                                value="no"
+                                onchange={() => useSuggestions.set(false)}
+                                class="cursor-pointer hidden"
+                            />
+                            <span class:underline={$useSuggestions === false}>no</span>
+                        </label>
+                    </div>
+                </div>
+
                 <!--default bang entry-->
                 <div
                     class="flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-2"
                 >
                     <span
                         title={`the website to search with by default. starts with "!". default is "!g" for Google.`}
-                        class="cursor-help py-3 sm:whitespace-nowrap"
+                        class="cursor-help py-3 sm:whitespace-nowrap font-bold"
                         >default bang</span
                     >
                     <input
@@ -102,16 +130,14 @@
                     <div class="flex gap-x-2">
                         <button
                             onclick={() => setDefaultBang(input)}
-                            class="p-2 cursor-pointer hover:underline"
-                            >Save</button
+                            class="p-2 cursor-pointer">Save</button
                         >
                         <button
                             onclick={() => {
                                 selectedBang.set("!g");
                                 input = "";
                             }}
-                            class="p-2 cursor-pointer hover:underline"
-                            >Reset</button
+                            class="p-2 cursor-pointer">Reset</button
                         >
                     </div>
                 </div>
@@ -153,6 +179,6 @@
         @apply outline-red-700 outline-3 dark:outline-red-700;
     }
     span {
-        @apply text-zinc-900 dark:text-zinc-100;
+        @apply text-zinc-600 dark:text-zinc-300;
     }
 </style>
