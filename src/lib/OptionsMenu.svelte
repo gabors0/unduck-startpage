@@ -31,85 +31,96 @@
 </script>
 
 <div
-    class="OptionsMenu z-99 absolute flex flex-row justify-end w-auto sm:w-128 top-2 right-2 left-2 sm:left-auto mb-2 p-3 rounded-md"
+    class="OptionsMenu z-99 absolute flex flex-row justify-end w-auto sm:w-128 top-2 right-2 left-2 sm:left-auto mb-2 p-3 bg-zinc-100 dark:bg-zinc-900 rounded-md"
     style:outline={isOn ? "1px solid #444" : "none"}
 >
-    {#if isOn}
-        <div class="mr-auto space-y-4">
-            <!--theme entry-->
-            <div>
-                <span class="py-3 block mb-2">theme</span>
-                <div class="flex gap-x-4">
-                    <label class="flex items-center cursor-pointer">
-                        <input
-                            type="radio"
-                            name="theme"
-                            value="light"
-                            checked={$theme === "light"}
-                            onchange={() => theme.set("light")}
-                            class="cursor-pointer hidden"
-                        />
-                        <span class:underline={$theme === "light"}>light</span>
-                    </label>
-                    <label class="flex items-center cursor-pointer">
-                        <input
-                            type="radio"
-                            name="theme"
-                            value="dark"
-                            checked={$theme === "dark"}
-                            onchange={() => theme.set("dark")}
-                            class="cursor-pointer hidden"
-                        />
-                        <span class:underline={$theme === "dark"}>dark</span>
-                    </label>
-                    <label class="flex items-center cursor-pointer">
-                        <input
-                            type="radio"
-                            name="theme"
-                            value="system"
-                            checked={$theme === "system"}
-                            onchange={() => theme.set("system")}
-                            class="cursor-pointer hidden"
-                        />
-                        <span class:underline={$theme === "system"}>system</span>
-                    </label>
+    <div class="mr-auto gap-y-4">
+        {#if isOn}
+            <div class="mr-auto space-y-4">
+                <!--theme entry-->
+                <div class="flex flex-col sm:flex-row sm:items-center gap-x-4">
+                    <span class="py-3">theme</span>
+                    <div class="flex gap-x-4">
+                        <label class="flex items-center cursor-pointer">
+                            <input
+                                type="radio"
+                                name="theme"
+                                value="light"
+                                checked={$theme === "light"}
+                                onchange={() => theme.set("light")}
+                                class="cursor-pointer hidden"
+                            />
+                            <span class:underline={$theme === "light"}
+                                >light</span
+                            >
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input
+                                type="radio"
+                                name="theme"
+                                value="dark"
+                                checked={$theme === "dark"}
+                                onchange={() => theme.set("dark")}
+                                class="cursor-pointer hidden"
+                            />
+                            <span class:underline={$theme === "dark"}>dark</span
+                            >
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input
+                                type="radio"
+                                name="theme"
+                                value="system"
+                                checked={$theme === "system"}
+                                onchange={() => theme.set("system")}
+                                class="cursor-pointer hidden"
+                            />
+                            <span class:underline={$theme === "system"}
+                                >system</span
+                            >
+                        </label>
+                    </div>
                 </div>
-            </div>
 
-            <!--default bang entry-->
-            <div>
-                <span
-                    title={`the website to search with by default. starts with "!". default is "!g" for Google.`}
-                    class="cursor-help py-3 block mb-2">default bang</span
+                <!--default bang entry-->
+                <div
+                    class="flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-2"
                 >
-                <input
-                    bind:value={input}
-                    class:success={isSuccessful}
-                    class:error={isUnsuccessful}
-                    type="text"
-                    placeholder={$selectedBang}
-                    class="border-0 rounded-md p-2 transition-[outline] duration-50"
-                />
-                <div class="mt-2">
-                    <button
-                        onclick={() => setDefaultBang(input)}
-                        class="p-2 rounded-md hover:bg-neutral-600">Save</button
+                    <span
+                        title={`the website to search with by default. starts with "!". default is "!g" for Google.`}
+                        class="cursor-help py-3 sm:whitespace-nowrap"
+                        >default bang</span
                     >
-                    <button
-                        onclick={() => {
-                            selectedBang.set("!g");
-                            input = "";
-                        }}
-                        class="p-2 rounded-md hover:bg-neutral-600"
-                        >Reset</button
-                    >
+                    <input
+                        bind:value={input}
+                        class:success={isSuccessful}
+                        class:error={isUnsuccessful}
+                        type="text"
+                        placeholder={$selectedBang}
+                        class="border-0 rounded-md p-2 transition-[outline] duration-50 sm:w-32"
+                    />
+                    <div class="flex gap-x-2">
+                        <button
+                            onclick={() => setDefaultBang(input)}
+                            class="p-2 cursor-pointer hover:underline"
+                            >Save</button
+                        >
+                        <button
+                            onclick={() => {
+                                selectedBang.set("!g");
+                                input = "";
+                            }}
+                            class="p-2 cursor-pointer hover:underline"
+                            >Reset</button
+                        >
+                    </div>
                 </div>
             </div>
-        </div>
-    {/if}
+        {/if}
+    </div>
     <button
         onclick={() => (isOn = !isOn)}
-        class="max-w-8 max-h-8 p-1 rounded-sm"
+        class="max-w-8 max-h-8 p-1 cursor-pointer hover:bg-zinc-200 hover:dark:bg-zinc-700 rounded-sm"
     >
         {#if !isOn}
             <svg

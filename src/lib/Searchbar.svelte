@@ -31,7 +31,7 @@
         bind:value={query}
     />
     <button
-        class="searchBtn flex items-center justify-center rounded-md bg-transparent border-0 p-1 h-12 w-12 cursor-pointer"
+        class="searchBtn flex items-center justify-center rounded-md bg-transparent hover:bg-zinc-200 hover:dark:bg-zinc-700 border-0 p-1 h-12 w-12 cursor-pointer"
         aria-label="Search..."
         title="Search..."
         bind:this={searchBtn}

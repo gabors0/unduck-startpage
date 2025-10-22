@@ -59,9 +59,6 @@
     :global(input:focus) {
         @apply outline-accent outline-2;
     }
-    :global(button:hover) {
-        @apply bg-zinc-200 dark:bg-zinc-700;
-    }
     span {
         @apply text-zinc-400 dark:text-zinc-500;
     }
