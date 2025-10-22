@@ -19,10 +19,11 @@
 
 {@render children?.()}
 
-<style>
+<style lang="postcss">
     @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+    @reference "../app.css";
     :global(body) {
-        background: #131313;
+        @apply flex justify-center overflow-hidden h-screen text-zinc-900 dark:text-zinc-100 bg-zinc-100 dark:bg-zinc-900;
         font-family:
             "Inter",
             system-ui,
@@ -35,33 +36,33 @@
             "Apple Color Emoji",
             "Segoe UI Emoji",
             "Noto Color Emoji";
-        color: #eee;
-        display: flex;
-        justify-content: center;
-        height: 100vh;
-        overflow: hidden;
     }
     :global(::selection) {
-        background: #059a88;
-        color: #191919;
+        @apply bg-accent text-zinc-100 dark:text-zinc-900;
     }
     :global(a) {
-        color: #bbb;
+        @apply text-zinc-500 dark:text-zinc-500;
         text-decoration: none;
     }
     :global(a:hover) {
-        color: #eee;
+        @apply text-zinc-600 dark:text-zinc-400;
     }
     :global(a:active) {
-        color: #ccc;
+        @apply text-accent;
     }
     :global(.svgIcon) {
-        fill: #eee;
+        @apply fill-zinc-900 dark:fill-zinc-100;
+    }
+    :global(input) {
+        @apply bg-zinc-200 dark:bg-zinc-900 outline outline-zinc-700 text-zinc-900 dark:text-zinc-100;
+    }
+    :global(input:focus) {
+        @apply outline-accent outline-2;
     }
     span {
-        color: #bbb;
+        @apply text-zinc-400 dark:text-zinc-500;
     }
     .seperator {
-        color: #bbb;
+        @apply text-zinc-400 dark:text-zinc-500;
     }
 </style>
