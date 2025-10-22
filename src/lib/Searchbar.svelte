@@ -3,6 +3,7 @@
 
     let query = "";
     let searchBtn;
+    let suggestions: Array<{ phrase: string }> = [];
 
     const search = () => {
         if (query) {
@@ -13,6 +14,26 @@
                 `https://unduck.link?q=${encodeURIComponent(searchQuery)}`,
             );
         } else console.warn("The search query is empty");
+    };
+
+    //duckduckgo.com/ac/?q=%q
+    const getSuggestions = async () => {
+        if (query.length > 2) {
+            try {
+                const response = await fetch(
+                    `/api/suggestions?q=${encodeURIComponent(query)}`,
+                );
+                const data = await response.json();
+                data.splice(5);
+                console.log(data);
+                suggestions = data;
+            } catch (error) {
+                console.error("Failed to fetch suggestions:", error);
+                suggestions = [];
+            }
+        } else {
+            suggestions = [];
+        }
     };
 </script>
 
@@ -29,6 +50,7 @@
             if (e.key === "Enter") search();
         }}
         bind:value={query}
+        on:input={() => getSuggestions()}
     />
     <button
         class="searchBtn flex items-center justify-center rounded-md bg-transparent hover:bg-zinc-200 hover:dark:bg-zinc-700 border-0 p-1 h-12 w-12 cursor-pointer"
@@ -47,3 +69,28 @@
         >
     </button>
 </div>
+{#if suggestions.length > 0}
+    <div
+        class="SearchSuggestions flex flex-col items-start justify-center w-[calc(100vw-5%)] h-auto sm:mx-0 sm:w-120 sm:w-max-120 bg-zinc-200 dark:bg-zinc-800 py-5 rounded-md"
+    >
+        {#each suggestions as suggestion}
+            <span
+                class="w-full px-3 cursor-pointer hover:bg-zinc-300 hover:dark:bg-zinc-700"
+                on:click={() => {
+                    query = suggestion.phrase;
+                    search();
+                }}
+                on:keydown={(e) => {
+                    if (e.key === "Enter") {
+                        query = suggestion.phrase;
+                        search();
+                    }
+                }}
+                role="button"
+                tabindex="0"
+            >
+                {suggestion.phrase}
+            </span>
+        {/each}
+    </div>
+{/if}
