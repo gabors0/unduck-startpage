@@ -38,7 +38,7 @@
 </script>
 
 <div
-    class="searchBar flex items-center justify-between my-5 w-[calc(100vw-5%)] h-auto sm:mx-0 sm:w-120 sm:w-max-120"
+    class="searchBar flex items-center justify-between mt-5 mb-3 w-[calc(100vw-5%)] h-auto sm:mx-0 sm:w-120 sm:w-max-120"
 >
     <!-- svelte-ignore a11y_autofocus -->
     <input
@@ -71,7 +71,7 @@
 </div>
 {#if suggestions.length > 0}
     <div
-        class="SearchSuggestions flex flex-col items-start justify-center w-[calc(100vw-5%)] h-auto sm:mx-0 sm:w-120 sm:w-max-120 bg-zinc-200 dark:bg-zinc-800 py-5 rounded-md"
+        class="SearchSuggestions flex flex-col items-start justify-center w-[calc(100vw-5%)] h-auto sm:mx-0 sm:w-120 sm:w-max-120 bg-zinc-200 dark:bg-zinc-800 py-3 rounded-md"
     >
         {#each suggestions as suggestion}
             <span

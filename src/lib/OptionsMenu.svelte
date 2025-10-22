@@ -102,7 +102,7 @@
                     <div class="flex gap-x-2">
                         <button
                             onclick={() => setDefaultBang(input)}
-                            class="p-2 cursor-pointer hover:underline"
+                            class="p-2 cursor-pointer"
                             >Save</button
                         >
                         <button
@@ -110,7 +110,7 @@
                                 selectedBang.set("!g");
                                 input = "";
                             }}
-                            class="p-2 cursor-pointer hover:underline"
+                            class="p-2 cursor-pointer"
                             >Reset</button
                         >
                     </div>
