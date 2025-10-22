@@ -9,5 +9,5 @@
 - [x] Ability to select default bang
 - [x] Themes
 - [x] Search suggestions
-- [ ] Simplify styles
+- [ ] Declutter styles
 - [ ] Bang suggestions/display
