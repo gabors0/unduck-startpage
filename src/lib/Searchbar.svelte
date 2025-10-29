@@ -5,6 +5,10 @@
     let searchBtn;
     let suggestions: Array<{ phrase: string }> = [];
 
+    $: if (!$useSuggestions) {
+        suggestions = [];
+    }
+
     const search = () => {
         if (query) {
             const hasBang = /!\w+/.test(query);
@@ -25,7 +29,6 @@
                 );
                 const data = await response.json();
                 data.splice(5);
-                console.log(data);
                 suggestions = data;
             } catch (error) {
                 console.error("Failed to fetch suggestions:", error);
@@ -42,18 +45,18 @@
 >
     <!-- svelte-ignore a11y_autofocus -->
     <input
-            class="w-1/1 h-12 border-0 text-xl rounded-md mr-3 p-2 py-4"
-            autofocus
-            type="text"
-            placeholder="search..."
-            on:keydown={(e) => {
-                if (e.key === "Enter") search();
-            }}
-            bind:value={query}
-            on:input={() => {
-                if ($useSuggestions) getSuggestions();
-            }}
-        />
+        class="w-1/1 h-12 border-0 text-xl rounded-md mr-3 p-2 py-4"
+        autofocus
+        type="text"
+        placeholder="search..."
+        on:keydown={(e) => {
+            if (e.key === "Enter") search();
+        }}
+        bind:value={query}
+        on:input={() => {
+            if ($useSuggestions) getSuggestions();
+        }}
+    />
     <button
         class="searchBtn flex items-center justify-center rounded-md bg-transparent hover:bg-zinc-200 hover:dark:bg-zinc-700 border-0 p-1 h-12 w-12 cursor-pointer"
         aria-label="Search..."
