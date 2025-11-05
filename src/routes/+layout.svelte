@@ -6,21 +6,23 @@
 </script>
 
 <svelte:head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin="anonymous"
+    />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet"
+    />
     <link rel="icon" href={favicon} />
     <title>search</title>
 </svelte:head>
 
-<footer class="absolute bottom-0 left-0 p-5">
-    <span>search powered by</span>
-    <a href="https://unduck.link">unduck.link</a>
-    <span class="seperator select-none">•</span>
-    <a href="https://github.com/gabors0/unduck-startpage">github</a>
-</footer>
-
 {@render children?.()}
 
 <style lang="postcss">
-    @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
     @reference "../app.css";
     :global(body) {
         @apply flex justify-center overflow-hidden h-screen text-zinc-900 dark:text-zinc-100 bg-zinc-100 dark:bg-zinc-900;
@@ -64,11 +66,5 @@
     }
     :global(button:hover, label > span:hover) {
         @apply text-accent;
-    }
-    span {
-        @apply text-zinc-400 dark:text-zinc-500;
-    }
-    .seperator {
-        @apply text-zinc-400 dark:text-zinc-500;
     }
 </style>
