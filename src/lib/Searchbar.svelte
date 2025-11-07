@@ -76,7 +76,7 @@
 </div>
 {#if suggestions.length > 0}
     <div
-        class="SearchSuggestions flex flex-col items-start justify-center w-[calc(100vw-5%)] h-auto sm:mx-0 sm:w-120 sm:w-max-120 bg-zinc-200 dark:bg-zinc-800 py-3 rounded-md"
+        class="SearchSuggestions flex flex-col items-start justify-center w-[calc(100vw-5%)] h-auto sm:mx-0 sm:w-120 sm:w-max-120 bg-zinc-200 dark:bg-zinc-800 py-3 mb-3 rounded-md"
     >
         {#each suggestions as suggestion}
             <span

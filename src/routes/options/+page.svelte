@@ -1,10 +1,13 @@
 <script lang="ts">
     import { selectedBang, useSuggestions } from "$lib/stores/options";
     import { theme, type Theme } from "$lib/stores/theme";
+    import { shortcuts } from "$lib/stores/shortcuts";
+
     let input = $state("");
     let isUnsuccessful = $state(false);
     let isSuccessful = $state(false);
 
+    //bangs
     function setDefaultBang(value: string) {
         if (
             !input.startsWith("!") ||
@@ -26,6 +29,32 @@
             isSuccessful = false;
         }, 1000);
         console.log("Default bang set to:", value);
+    }
+
+    //shortcuts
+    let newTitle = $state("");
+    let newUrl = $state("");
+    let newIcon = $state("");
+
+    function addShortcut() {
+        if (!newTitle || !newUrl || !newIcon) {
+            isUnsuccessful = true;
+            setTimeout(() => {
+                isUnsuccessful = false;
+            }, 1000);
+        } else {
+            shortcuts.update((list) => [
+                ...list,
+                { url: newUrl, title: newTitle, icon: newIcon },
+            ]);
+            newTitle = "";
+            newUrl = "";
+            newIcon = "";
+        }
+    }
+    function removeShortcut(index: number) {
+        //@ts-ignore
+        shortcuts.update((list) => list.filter((_, i) => i !== index));
     }
 </script>
 
@@ -125,6 +154,53 @@
                     class="p-2 cursor-pointer">Reset</button
                 >
             </div>
+        </div>
+    </section>
+
+    <section>
+        <h1 class="text-2xl">shortcuts</h1>
+        <div class="p-3 flex flex-wrap flex-row items-center">
+            <input
+                bind:value={newTitle}
+                class:success={isSuccessful}
+                class:error={isUnsuccessful}
+                placeholder="title"
+                type="text"
+                class="w-32 border-0 rounded-md p-2 mr-3"
+            />
+            <input
+                bind:value={newUrl}
+                class:success={isSuccessful}
+                class:error={isUnsuccessful}
+                placeholder="url"
+                type="text"
+                class="w-32 border-0 rounded-md p-2 mr-3"
+            />
+            <input
+                bind:value={newIcon}
+                class:success={isSuccessful}
+                class:error={isUnsuccessful}
+                placeholder="icon url"
+                type="text"
+                class="w-32 border-0 rounded-md p-2 mr-3"
+            />
+            <button class="p-2 cursor-pointer" onclick={addShortcut}>
+                add new
+            </button>
+        </div>
+
+        <div class="w-lg flex flex-wrap">
+            {#each $shortcuts as shortcut, i}
+                <div
+                    class="flex justify-between rounded-md hover:bg items-center hover:bg-zinc-200 hover:dark:bg-zinc-700"
+                >
+                    <p class="p-2">{shortcut.title}</p>
+                    <button
+                        class="p-2 cursor-pointer"
+                        onclick={() => removeShortcut(i)}>Remove</button
+                    >
+                </div>
+            {/each}
         </div>
     </section>
     <a class="text-left pr-3" href="/">back to search &gt;</a>
