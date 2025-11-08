@@ -1,6 +1,7 @@
 <script lang="ts">
     import Searchbar from "../lib/Searchbar.svelte";
     import Shortcut from "../lib/Shortcut.svelte";
+    import { shortcuts } from "$lib/stores/shortcuts";
 </script>
 
 <div class="flex flex-col justify-center items-center">
@@ -12,23 +13,28 @@ _/    _/  _/    _/  _/    _/  _/    _/  _/        _/  _/
  _/_/_/  _/    _/    _/_/_/    _/_/_/    _/_/_/  _/    _/
 </pre>
     <Searchbar />
-    <div class="flex max-w-[27rem] gap-4 flex-row flex-wrap">
-        <Shortcut
-            icon="https://media.discordapp.net/attachments/1304948416979140661/1434994989057835209/image.png?ex=690c54fa&is=690b037a&hm=d3ed943719f99122e7f3dee5955e03a7a7afecbc218b7bd55a6b1e965aff8b07&=&format=webp&quality=lossless"
-            title="test"
-            url="https://gs0.me"
-        />
-        <Shortcut
-            icon="https://media.BADdiscordapp.net/attachments/1304948416979140661/1434994989057835209/image.png?ex=690c54fa&is=690b037a&hm=d3ed943719f99122e7f3dee5955e03a7a7afecbc218b7bd55a6b1e965aff8b07&=&format=webp&quality=lossless"
-            title="test"
-            url="https://gs0.me"
-        />
-        <Shortcut icon="" title="test" url="https://gs0.me" />
-        <Shortcut icon="" title="test" url="https://gs0.me" />
-        <Shortcut icon="" title="test" url="https://gs0.me" />
-        <Shortcut icon="" title="test" url="https://gs0.me" />
-        <Shortcut icon="" title="test" url="https://gs0.me" />
-        <Shortcut icon="" title="test" url="https://gs0.me" />
+    <div class="flex justify-center max-w-[48rem] gap-4 flex-row flex-wrap">
+        {#each $shortcuts as shortcut}
+            <Shortcut
+                title={shortcut.title}
+                url={shortcut.url}
+                icon={shortcut.icon}
+            />
+        {/each}
+        <!-- <Shortcut title="sigma" url="sigma" icon="sigma" />
+        <Shortcut title="sigma" url="sigma" icon="sigma" />
+        <Shortcut title="sigma" url="sigma" icon="sigma" />
+        <Shortcut title="sigma" url="sigma" icon="sigma" />
+        <Shortcut title="sigma" url="sigma" icon="sigma" />
+        <Shortcut title="sigma" url="sigma" icon="sigma" />
+        <Shortcut title="sigma" url="sigma" icon="sigma" />
+        <Shortcut title="sigma" url="sigma" icon="sigma" />
+        <Shortcut title="sigma" url="sigma" icon="sigma" />
+        <Shortcut title="sigma" url="sigma" icon="sigma" />
+        <Shortcut title="sigma" url="sigma" icon="sigma" />
+        <Shortcut title="sigma" url="sigma" icon="sigma" />
+        <Shortcut title="sigma" url="sigma" icon="sigma" />
+        <Shortcut title="sigma" url="sigma" icon="sigma" /> -->
     </div>
 </div>
 
@@ -41,7 +47,7 @@ _/    _/  _/    _/  _/    _/  _/    _/  _/        _/  _/
     <a href="/options">options</a>
 </footer>
 
-<style>
+<style lang="postcss">
     @reference "../app.css";
     span {
         @apply text-zinc-400 dark:text-zinc-500;

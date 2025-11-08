@@ -4,8 +4,8 @@
     import { shortcuts } from "$lib/stores/shortcuts";
 
     let input = $state("");
-    let isUnsuccessful = $state(false);
-    let isSuccessful = $state(false);
+    let isUnsuccessfulBang = $state(false);
+    let isSuccessfulBang = $state(false);
 
     //bangs
     function setDefaultBang(value: string) {
@@ -16,17 +16,17 @@
         ) {
             console.error("default bang is invalid");
             input = "";
-            isUnsuccessful = true;
+            isUnsuccessfulBang = true;
             setTimeout(() => {
-                isUnsuccessful = false;
+                isUnsuccessfulBang = false;
             }, 1000);
             return;
         }
         selectedBang.set(value);
         input = "";
-        isSuccessful = true;
+        isSuccessfulBang = true;
         setTimeout(() => {
-            isSuccessful = false;
+            isSuccessfulBang = false;
         }, 1000);
         console.log("Default bang set to:", value);
     }
@@ -35,21 +35,33 @@
     let newTitle = $state("");
     let newUrl = $state("");
     let newIcon = $state("");
+    let isUnsuccessfulShortcut = $state(false);
+    let isSuccessfulShortcut = $state(false);
 
+    let count = $derived($shortcuts.length);
     function addShortcut() {
-        if (!newTitle || !newUrl || !newIcon) {
-            isUnsuccessful = true;
-            setTimeout(() => {
-                isUnsuccessful = false;
-            }, 1000);
-        } else {
-            shortcuts.update((list) => [
-                ...list,
-                { url: newUrl, title: newTitle, icon: newIcon },
-            ]);
-            newTitle = "";
-            newUrl = "";
-            newIcon = "";
+        if (count < 14) {
+            if (newTitle && newUrl) {
+                if (!newUrl.startsWith("http")) {
+                    newUrl = "http://" + newUrl;
+                }
+                shortcuts.update((list) => [
+                    ...list,
+                    {
+                        url: newUrl.trim(),
+                        title: newTitle,
+                        icon: newIcon.trim(),
+                    },
+                ]);
+                newTitle = "";
+                newUrl = "";
+                newIcon = "";
+            } else {
+                isUnsuccessfulShortcut = true;
+                setTimeout(() => {
+                    isUnsuccessfulShortcut = false;
+                }, 1000);
+            }
         }
     }
     function removeShortcut(index: number) {
@@ -134,8 +146,8 @@
             <input
                 name="defaultBangInput"
                 bind:value={input}
-                class:success={isSuccessful}
-                class:error={isUnsuccessful}
+                class:success={isSuccessfulBang}
+                class:error={isUnsuccessfulBang}
                 type="text"
                 placeholder={$selectedBang}
                 class="w-32 border-0 rounded-md p-2 mr-3 transition-[outline] duration-50"
@@ -157,48 +169,65 @@
         </div>
     </section>
 
-    <section>
-        <h1 class="text-2xl">shortcuts</h1>
-        <div class="p-3 flex flex-wrap flex-row items-center">
+    <section class="w-full">
+        <div class="flex gap-x-4 items-center flex-row">
+            <h1 class="text-2xl">shortcuts</h1>
+            <i class="opacity-50">max. 14</i>
+        </div>
+        <div class="p-3 gap-4 flex flex-wrap flex-row items-center">
             <input
                 bind:value={newTitle}
-                class:success={isSuccessful}
-                class:error={isUnsuccessful}
+                class:error={isUnsuccessfulShortcut}
                 placeholder="title"
                 type="text"
-                class="w-32 border-0 rounded-md p-2 mr-3"
+                class="w-32 border-0 rounded-md p-2"
             />
             <input
                 bind:value={newUrl}
-                class:success={isSuccessful}
-                class:error={isUnsuccessful}
+                class:error={isUnsuccessfulShortcut}
                 placeholder="url"
                 type="text"
-                class="w-32 border-0 rounded-md p-2 mr-3"
+                class="w-32 border-0 rounded-md p-2"
             />
             <input
                 bind:value={newIcon}
-                class:success={isSuccessful}
-                class:error={isUnsuccessful}
                 placeholder="icon url"
                 type="text"
-                class="w-32 border-0 rounded-md p-2 mr-3"
+                class="w-32 border-0 rounded-md p-2"
             />
-            <button class="p-2 cursor-pointer" onclick={addShortcut}>
-                add new
-            </button>
+            {#if count < 14}
+                <button class="p-2 cursor-pointer" onclick={addShortcut}>
+                    add new
+                </button>
+            {:else}max amount reached!{/if}
         </div>
 
-        <div class="w-lg flex flex-wrap">
+        <div class="px-3 gap-4 w-lg flex flex-wrap">
             {#each $shortcuts as shortcut, i}
                 <div
-                    class="flex justify-between rounded-md hover:bg items-center hover:bg-zinc-200 hover:dark:bg-zinc-700"
+                    class="flex justify-between rounded-md *:m-2 hover:bg items-center hover:bg-zinc-200 hover:dark:bg-zinc-700"
                 >
-                    <p class="p-2">{shortcut.title}</p>
+                    {#if shortcut.icon}
+                        <img
+                            src={shortcut.icon}
+                            alt=""
+                            class="w-8 h-8 object-cover"
+                        />
+                    {/if}
+                    <p title={shortcut.url}>{shortcut.title}</p>
                     <button
-                        class="p-2 cursor-pointer"
-                        onclick={() => removeShortcut(i)}>Remove</button
+                        class="cursor-pointer"
+                        onclick={() => removeShortcut(i)}
                     >
+                        <svg
+                            class="svgIcon w-5 h-5"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 640 640"
+                            ><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path
+                                d="M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z"
+                            /></svg
+                        >
+                    </button>
                 </div>
             {/each}
         </div>
