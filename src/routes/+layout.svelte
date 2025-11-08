@@ -1,8 +1,23 @@
 <script lang="ts">
     import "../app.css";
     import favicon from "$lib/assets/favicon.svg";
+    import { onMount } from "svelte";
 
     let { children } = $props();
+
+    onMount(() => {
+        function setAppHeight() {
+            document.documentElement.style.setProperty(
+                "--app-height",
+                `${window.innerHeight}px`,
+            );
+        }
+
+        setAppHeight();
+        window.addEventListener("resize", setAppHeight);
+
+        return () => window.removeEventListener("resize", setAppHeight);
+    });
 </script>
 
 <svelte:head>
@@ -26,6 +41,7 @@
     @reference "../app.css";
     :global(body) {
         @apply flex justify-center overflow-hidden h-screen text-zinc-900 dark:text-zinc-100 bg-zinc-100 dark:bg-zinc-900;
+        height: var(--app-height, 100vh);
         font-family:
             "Inter",
             system-ui,
@@ -55,7 +71,8 @@
     :global(.svgIcon) {
         @apply fill-zinc-900 dark:fill-zinc-100;
     }
-    :global(.searchBtn:hover > .svgIcon) {
+    :global(.svgIcon:not(a .svgIcon):hover) {
+        /*except a shortcut that has no icon :)*/
         @apply fill-accent;
     }
     :global(input[type="text"]) {

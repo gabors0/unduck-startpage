@@ -2,6 +2,10 @@ import { writable } from "svelte/store";
 
 export type Theme = "light" | "dark" | "system";
 
+//
+//THIS MIGHT BE VIBE CODED
+//
+
 // Get initial theme from localStorage or default to system
 const getInitialTheme = (): Theme => {
   if (typeof window !== "undefined") {
