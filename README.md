@@ -9,7 +9,7 @@
 - [x] Ability to select default bang
 - [x] Themes
 - [x] Search suggestions
-- [ ] Add shortcuts (bookmarks)
+- [x] Add shortcuts (bookmarks)
   - [ ] Get favicons for shortcuts
 - [ ] Bang suggestions/display
 - [ ] Make the website search not powered by Unduck (but by this website itself)
