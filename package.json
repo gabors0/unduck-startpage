@@ -27,5 +27,8 @@
 		"onlyBuiltDependencies": [
 			"esbuild"
 		]
+	},
+	"dependencies": {
+		"figlet": "^1.9.4"
 	}
 }

@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      figlet:
+        specifier: ^1.9.4
+        version: 1.9.4
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^6.1.0
@@ -851,6 +855,10 @@ packages:
     resolution: {integrity: sha512-1rXeuUUiGGrykh+CeBdu5Ie7OJwinCgQY0bc7GCRxy5xVHy+moaqkpL/jqQq0MtQOeYcrqEz4abc5f0KtU7W4A==}
     engines: {node: '>=12.5.0'}
 
+  commander@14.0.2:
+    resolution: {integrity: sha512-TywoWNNRbhoD0BXs1P3ZEScW8W5iKrnbithIl0YH+uCmBd0QpPOA8yc82DS3BIE5Ma6FnBVUsJ7wVUDz4dvOWQ==}
+    engines: {node: '>=20'}
+
   cookie@0.6.0:
     resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
     engines: {node: '>= 0.6'}
@@ -920,6 +928,11 @@ packages:
     peerDependenciesMeta:
       picomatch:
         optional: true
+
+  figlet@1.9.4:
+    resolution: {integrity: sha512-uN6QE+TrzTAHC1IWTyrc4FfGo2KH/82J8Jl1tyKB7+z5DBit/m3D++Iu5lg91qJMnQQ3vpJrj5gxcK/pk4R9tQ==}
+    engines: {node: '>= 17.0.0'}
+    hasBin: true
 
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
@@ -1808,6 +1821,8 @@ snapshots:
       color-convert: 2.0.1
       color-string: 1.9.1
 
+  commander@14.0.2: {}
+
   cookie@0.6.0: {}
 
   cookie@1.0.2: {}
@@ -1901,6 +1916,10 @@ snapshots:
   fdir@6.5.0(picomatch@4.0.3):
     optionalDependencies:
       picomatch: 4.0.3
+
+  figlet@1.9.4:
+    dependencies:
+      commander: 14.0.2
 
   fsevents@2.3.3:
     optional: true

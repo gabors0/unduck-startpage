@@ -1,5 +1,9 @@
 <script lang="ts">
-    import { selectedBang, useSuggestions } from "$lib/stores/options";
+    import {
+        selectedBang,
+        useSuggestions,
+        titleMode,
+    } from "$lib/stores/options";
     import { theme, type Theme } from "$lib/stores/theme";
     import { shortcuts } from "$lib/stores/shortcuts";
 
@@ -108,6 +112,55 @@
                     class="cursor-pointer hidden"
                 />
                 <span class:underline={$theme === "system"}>system</span>
+            </label>
+        </div>
+    </section>
+
+    <section>
+        <h1 class="text-2xl">title mode</h1>
+        <div class="flex p-3 gap-x-4">
+            <label class="flex items-center cursor-pointer">
+                <input
+                    type="radio"
+                    name="titleMode"
+                    value="clock"
+                    onchange={() => titleMode.set("clock")}
+                    class="cursor-pointer hidden"
+                />
+                <span class:underline={$titleMode === "clock"}>ascii clock</span
+                >
+            </label>
+            <label class="flex items-center cursor-pointer">
+                <input
+                    type="radio"
+                    name="titleMode"
+                    value="title"
+                    onchange={() => titleMode.set("title")}
+                    class="cursor-pointer hidden"
+                />
+                <span class:underline={$titleMode === "title"}>ascii title</span
+                >
+            </label>
+            <label class="flex items-center cursor-pointer">
+                <input
+                    type="radio"
+                    name="titleMode"
+                    value="text"
+                    onchange={() => titleMode.set("text")}
+                    class="cursor-pointer hidden"
+                />
+                <span class:underline={$titleMode === "text"}>normal title</span
+                >
+            </label>
+            <label class="flex items-center cursor-pointer">
+                <input
+                    type="radio"
+                    name="titleMode"
+                    value="none"
+                    onchange={() => titleMode.set("none")}
+                    class="cursor-pointer hidden"
+                />
+                <span class:underline={$titleMode === "none"}>none</span>
             </label>
         </div>
     </section>

@@ -39,3 +39,23 @@ if (typeof window !== "undefined") {
     localStorage.setItem("useSuggestions", String(value));
   });
 }
+
+//init title mode
+const getInitialTitleValue = () => {
+  if (typeof window !== "undefined") {
+    const stored = localStorage.getItem("titleMode");
+    if (stored) {
+      return stored;
+    }
+  }
+  return "clock";
+};
+
+export const titleMode = writable(getInitialTitleValue());
+
+// save to localstorage
+if (typeof window !== "undefined") {
+  titleMode.subscribe((value) => {
+    localStorage.setItem("titleMode", String(value));
+  });
+}

@@ -41,7 +41,7 @@
 </script>
 
 <div
-    class="searchBar flex items-center justify-between mt-5 mb-3 w-[calc(100vw-5%)] h-auto sm:mx-0 sm:w-120 sm:w-max-120"
+    class="searchBar flex items-center justify-between my-3 w-[calc(100vw-5%)] h-auto sm:mx-0 sm:w-120 sm:w-max-120"
 >
     <!-- svelte-ignore a11y_autofocus -->
     <input

@@ -1,17 +1,26 @@
 <script lang="ts">
     import Searchbar from "../lib/Searchbar.svelte";
     import Shortcut from "../lib/Shortcut.svelte";
+    import Clock from "../lib/Clock.svelte";
     import { shortcuts } from "$lib/stores/shortcuts";
+    import { titleMode } from "$lib/stores/options";
 </script>
 
 <div class="flex flex-col justify-center items-center">
-    <pre class="font-bold font-[monospace] select-none text-[8px] sm:text-xs">
+    {#if $titleMode === "clock"}
+        <Clock />
+    {:else if $titleMode === "title"}
+        <pre
+            class="font-bold font-[monospace] select-none text-[8px] mb-3 sm:text-xs">
                              _/                      _/
   _/    _/  _/_/_/      _/_/_/  _/    _/    _/_/_/  _/  _/
  _/    _/  _/    _/  _/    _/  _/    _/  _/        _/_/
 _/    _/  _/    _/  _/    _/  _/    _/  _/        _/  _/
  _/_/_/  _/    _/    _/_/_/    _/_/_/    _/_/_/  _/    _/
 </pre>
+    {:else if $titleMode === "text"}
+        <h1 class="text-2xl">unduck</h1>
+    {:else}{/if}
     <Searchbar />
     <div class="flex justify-center max-w-[48rem] gap-4 flex-row flex-wrap">
         {#each $shortcuts as shortcut}
@@ -21,20 +30,6 @@ _/    _/  _/    _/  _/    _/  _/    _/  _/        _/  _/
                 icon={shortcut.icon}
             />
         {/each}
-        <!-- <Shortcut title="sigma" url="sigma" icon="sigma" />
-        <Shortcut title="sigma" url="sigma" icon="sigma" />
-        <Shortcut title="sigma" url="sigma" icon="sigma" />
-        <Shortcut title="sigma" url="sigma" icon="sigma" />
-        <Shortcut title="sigma" url="sigma" icon="sigma" />
-        <Shortcut title="sigma" url="sigma" icon="sigma" />
-        <Shortcut title="sigma" url="sigma" icon="sigma" />
-        <Shortcut title="sigma" url="sigma" icon="sigma" />
-        <Shortcut title="sigma" url="sigma" icon="sigma" />
-        <Shortcut title="sigma" url="sigma" icon="sigma" />
-        <Shortcut title="sigma" url="sigma" icon="sigma" />
-        <Shortcut title="sigma" url="sigma" icon="sigma" />
-        <Shortcut title="sigma" url="sigma" icon="sigma" />
-        <Shortcut title="sigma" url="sigma" icon="sigma" /> -->
     </div>
 </div>
 
