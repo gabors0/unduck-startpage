@@ -15,6 +15,6 @@
   - [ ] Get favicons for shortcuts
 - [x] Cool clock
   - [ ] Custom title
-  - [ ] Different fonts
+  - [x] Different fonts
 - [ ] Bang suggestions/display
 - [ ] Make the website search not powered by Unduck (but by this website itself)

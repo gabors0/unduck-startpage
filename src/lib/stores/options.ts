@@ -13,7 +13,7 @@ const getInitialBangValue = () => {
 
 export const selectedBang = writable(getInitialBangValue());
 
-// save to localstorage
+// bang localstorage
 if (typeof window !== "undefined") {
   selectedBang.subscribe((value) => {
     localStorage.setItem("defaultBang", value);
@@ -33,7 +33,7 @@ const getInitialSuggestionsValue = () => {
 
 export const useSuggestions = writable(getInitialSuggestionsValue());
 
-// save to localstorage
+// suggestions localstorage
 if (typeof window !== "undefined") {
   useSuggestions.subscribe((value) => {
     localStorage.setItem("useSuggestions", String(value));
@@ -53,9 +53,29 @@ const getInitialTitleValue = () => {
 
 export const titleMode = writable(getInitialTitleValue());
 
-// save to localstorage
+// titlemode localstorage
 if (typeof window !== "undefined") {
   titleMode.subscribe((value) => {
     localStorage.setItem("titleMode", String(value));
+  });
+}
+
+// init clock font
+const getInitialFontValue = () => {
+  if (typeof window !== "undefined") {
+    const stored = localStorage.getItem("clockFont");
+    if (stored) {
+      return stored;
+    }
+  }
+  return "Alligator2";
+};
+
+export const clockFont = writable(getInitialFontValue());
+
+// clock font localstorage
+if (typeof window !== "undefined") {
+  clockFont.subscribe((value) => {
+    localStorage.setItem("clockFont", value);
   });
 }

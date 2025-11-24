@@ -75,10 +75,10 @@
         /*except a shortcut that has no icon :)*/
         @apply fill-accent;
     }
-    :global(input[type="text"]) {
+    :global(input[type="text"], select) {
         @apply bg-zinc-200 dark:bg-zinc-900 outline outline-zinc-700 text-zinc-900 dark:text-zinc-100;
     }
-    :global(input:focus) {
+    :global(input:focus, select:focus) {
         @apply outline-accent outline-2;
     }
     :global(button:hover, label > span:hover) {

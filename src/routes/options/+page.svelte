@@ -3,6 +3,7 @@
         selectedBang,
         useSuggestions,
         titleMode,
+        clockFont
     } from "$lib/stores/options";
     import { theme, type Theme } from "$lib/stores/theme";
     import { shortcuts } from "$lib/stores/shortcuts";
@@ -127,7 +128,7 @@
                     onchange={() => titleMode.set("clock")}
                     class="cursor-pointer hidden"
                 />
-                <span class:underline={$titleMode === "clock"}>ascii clock</span
+                <span class:underline={$titleMode === "clock"}>clock</span
                 >
             </label>
             <label class="flex items-center cursor-pointer">
@@ -162,6 +163,18 @@
                 />
                 <span class:underline={$titleMode === "none"}>none</span>
             </label>
+        </div>
+    </section>
+    
+    <section>
+        <h1 class="text-2xl">clock font</h1>
+        <div class="flex p-3 gap-x-4">
+            <select bind:value={$clockFont} name="asciiFont" id="asciiFont" class="cursor-pointer p-3 rounded-md text-zinc-900 dark:text-zinc-100 bg-zinc-100 dark:bg-zinc-900">
+                <option value="Alligator2">Alligator2</option>
+                <option value="Banner3">Banner3 (easier to read)</option>
+                <option value="Slant">Slant</option>
+                <option value="none">basic (no figlet)</option>
+            </select>
         </div>
     </section>
 

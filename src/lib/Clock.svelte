@@ -1,9 +1,11 @@
-<script>
+<script lang="ts">
     import { onMount } from "svelte";
     import figlet from "figlet";
+    import { clockFont } from "$lib/stores/options";
 
     let clock = "";
     let currentTime = "";
+    let isBasic = false;
 
     async function updateClock() {
         const now = new Date();
@@ -13,15 +15,21 @@
             minute: "2-digit",
             second: "2-digit",
         });
-
+    
         if (timeString !== currentTime) {
             currentTime = timeString;
-
-            figlet.text(timeString, { font: "Alligator2" }, (err, result) => {
-                if (!err) {
-                    clock = result;
-                }
-            });
+            if ($clockFont == "none") {
+                clock = timeString;
+                isBasic = true;
+                
+            } else {
+                figlet.text(timeString, { font: $clockFont }, (err, result) => {
+                    if (!err) {
+                        clock = result;
+                        isBasic = false;
+                    }
+                });
+            }
         }
     }
 
@@ -34,5 +42,5 @@
 
 <div>
     <pre
-        class="text-center m-0 leading-none mb-3 select-none text-[8px] sm:text-[12px] md:text-base">{clock}</pre>
+        class="text-center m-0 leading-none mb-3 select-none text-base {!isBasic ? "text-[8px] sm:text-[12px]" : "sm:text-7xl text-3xl" }">{clock}</pre>  
 </div>
