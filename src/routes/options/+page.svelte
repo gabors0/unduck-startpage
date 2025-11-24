@@ -3,7 +3,8 @@
         selectedBang,
         useSuggestions,
         titleMode,
-        clockFont
+        clockFont,
+        titleText
     } from "$lib/stores/options";
     import { theme, type Theme } from "$lib/stores/theme";
     import { shortcuts } from "$lib/stores/shortcuts";
@@ -166,18 +167,32 @@
         </div>
     </section>
     
-    <section>
-        <h1 class="text-2xl">clock font</h1>
-        <div class="flex p-3 gap-x-4">
-            <select bind:value={$clockFont} name="asciiFont" id="asciiFont" class="cursor-pointer p-3 rounded-md text-zinc-900 dark:text-zinc-100 bg-zinc-100 dark:bg-zinc-900">
-                <option value="Alligator2">Alligator2</option>
-                <option value="Banner3">Banner3 (easier to read)</option>
-                <option value="Slant">Slant</option>
-                <option value="none">basic (no figlet)</option>
-            </select>
-        </div>
-    </section>
+    {#if $titleMode === "clock"}
+        <section>
+            <h1 class="text-2xl">clock font</h1>
+            <div class="flex p-3 gap-x-4">
+                <select bind:value={$clockFont} name="asciiFont" id="asciiFont" class="cursor-pointer p-3 rounded-md text-zinc-900 dark:text-zinc-100 bg-zinc-100 dark:bg-zinc-900">
+                    <option value="Alligator2">Alligator2</option>
+                    <option value="Banner3">Banner3 (easier to read)</option>
+                    <option value="Slant">Slant</option>
+                    <option value="none">basic (no figlet)</option>
+                </select>
+            </div>
+        </section>
+    {/if}
 
+    {#if $titleMode === "text"}
+        <section>
+            <div class="flex gap-x-4 items-center flex-row">
+                <h1 class="text-2xl">title text</h1>
+                <i class="opacity-50">max. 48 characters</i>
+            </div>
+            <div class="flex p-3 gap-x-4">
+                <input bind:value={$titleText} onchange={() => titleText.set($titleText)} type="text" maxlength="48" placeholder="unduck" class="w-32 border-0 rounded-md p-2">
+            </div>
+        </section>
+    {/if}
+    
     <section>
         <h1 class="text-2xl">search suggestions</h1>
         <div class="flex p-3 gap-x-4">

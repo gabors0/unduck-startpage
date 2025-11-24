@@ -79,3 +79,23 @@ if (typeof window !== "undefined") {
     localStorage.setItem("clockFont", value);
   });
 }
+
+//init title text
+const getInitialTitleTextValue = () => {
+  if (typeof window !== "undefined") {
+    const stored = localStorage.getItem("titleText");
+    if (stored) {
+      return stored;
+    }
+  }
+  return "unduck";
+};
+
+export const titleText = writable(getInitialTitleTextValue());
+
+// title text localstorage
+if (typeof window !== "undefined") {
+  titleText.subscribe((value) => {
+    localStorage.setItem("titleText", value);
+  });
+}

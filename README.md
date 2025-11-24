@@ -14,7 +14,8 @@
 - [x] Add shortcuts (bookmarks)
   - [ ] Get favicons for shortcuts
 - [x] Cool clock
-  - [ ] Custom title
+  - [x] Custom title
   - [x] Different fonts
 - [ ] Bang suggestions/display
+- [ ] Maybe weather??
 - [ ] Make the website search not powered by Unduck (but by this website itself)

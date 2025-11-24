@@ -4,6 +4,7 @@
     import Clock from "../lib/Clock.svelte";
     import { shortcuts } from "$lib/stores/shortcuts";
     import { titleMode } from "$lib/stores/options";
+    import { titleText } from "$lib/stores/options";
 </script>
 
 <div class="flex flex-col justify-center items-center">
@@ -19,7 +20,7 @@ _/    _/  _/    _/  _/    _/  _/    _/  _/        _/  _/
  _/_/_/  _/    _/    _/_/_/    _/_/_/    _/_/_/  _/    _/
 </pre>
     {:else if $titleMode === "text"}
-        <h1 class="text-5xl">unduck</h1>
+        <h1 class="text-5xl">{$titleText}</h1>
     {:else}{/if}
     <Searchbar />
     <div class="flex justify-center max-w-[48rem] gap-4 flex-row flex-wrap">
