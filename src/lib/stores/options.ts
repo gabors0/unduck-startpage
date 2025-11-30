@@ -68,7 +68,7 @@ const getInitialFontValue = () => {
       return stored;
     }
   }
-  return "Alligator2";
+  return "none";
 };
 
 export const clockFont = writable(getInitialFontValue());
