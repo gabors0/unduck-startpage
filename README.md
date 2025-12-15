@@ -8,7 +8,7 @@
 - [x] Mobile support
 - [x] Ability to select default bang
 - [x] Themes
-  - [ ] More themes
+  - [x] More themes
   - [ ] Custom colors, bg image, etc
 - [x] Search suggestions
 - [x] Add shortcuts (bookmarks)
