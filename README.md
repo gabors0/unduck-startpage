@@ -1,6 +1,7 @@
 # unduck-startpage
 
-> obviously this project searches using [unduck](https://github.com/T3-Content/unduck) that uses the MIT license
+> obviously this project searches using [unduck](https://github.com/T3-Content/unduck) that uses the MIT license <br>
+> also it was mainly created for learning svelte
 
 **Todo**
 - [x] Basic functionality

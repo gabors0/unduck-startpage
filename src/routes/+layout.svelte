@@ -66,6 +66,14 @@
             "Noto Color Emoji";
     }
     
+    :global(*):focus {
+      outline: none;
+    }
+  
+    :global(*):focus-visible {
+        @apply outline-accent outline-1;
+    }
+    
     :global(::selection, ::-moz-selection) {
         @apply bg-accent text-background;
     }

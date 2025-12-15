@@ -15,7 +15,7 @@
 
 <a
     href={url}
-    class="w-16 h-16 sm:w-24 sm:h-24 flex flex-col justify-center items-center rounded-md hover:bg-hover hover:[&_svg]:fill-accent"
+    class="w-16 h-16 sm:w-24 sm:h-24 flex flex-col justify-center items-center rounded-md hover:bg-hover hover:text-accent hover:[&_svg]:fill-accent"
 >
     {#if validUrl && !imgFailed}
         <img
@@ -26,7 +26,7 @@
         />
     {:else}
         <svg
-            class="svgIcon w-12 h-12"
+            class="svgIcon w-12 h-12 fill-text"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 640 640"
             ><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path
