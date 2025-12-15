@@ -343,7 +343,7 @@
                     {/if}
                     <p title={shortcut.url}>{shortcut.title}</p>
                     <button
-                        class="cursor-pointer"
+                        class="cursor-pointer *:hover:fill-accent *:fill-text"
                         onclick={() => removeShortcut(i)}
                     >
                         <svg
