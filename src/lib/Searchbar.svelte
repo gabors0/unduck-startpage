@@ -76,11 +76,11 @@
 </div>
 {#if suggestions.length > 0}
     <div
-        class="SearchSuggestions flex flex-col items-start justify-center w-[calc(100vw-5%)] h-auto sm:mx-0 sm:w-120 sm:w-max-120 py-3 mb-3 rounded-md"
+        class="SearchSuggestions flex flex-col items-start justify-center w-[calc(100vw-5%)] h-auto sm:mx-0 sm:w-120 sm:w-max-120 mb-3 border border-hover rounded-md overflow-hidden"
     >
         {#each suggestions as suggestion}
             <span
-                class="w-full px-3 cursor-pointer"
+                class="w-full px-3 cursor-pointer hover:bg-hover"
                 on:click={() => {
                     query = suggestion.phrase;
                     search();
