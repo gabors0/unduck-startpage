@@ -359,7 +359,7 @@
             {/each}
         </div>
     </section>
-    <a class="text-left pr-3" href="/">back to search &gt;</a>
+    <a class="text-left pr-3 text-muted hover:text-accent" href="/">back to search &gt;</a>
 </div>
 
 <style lang="postcss">

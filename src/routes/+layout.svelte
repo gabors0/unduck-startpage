@@ -65,6 +65,10 @@
             "Segoe UI Emoji",
             "Noto Color Emoji";
     }
+    
+    :global(::selection, ::-moz-selection) {
+        @apply bg-accent text-background;
+    }
 
     :global(input:focus, select:focus) {
         @apply outline-accent outline-2;
