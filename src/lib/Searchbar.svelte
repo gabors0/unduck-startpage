@@ -45,7 +45,7 @@
 >
     <!-- svelte-ignore a11y_autofocus -->
     <input
-        class="w-1/1 h-12 border-0 text-xl rounded-md mr-3 p-2 py-4"
+        class="w-1/1 h-12 outline-muted/50 outline-1 text-xl rounded-md mr-3 p-2 py-4"
         autofocus
         type="text"
         placeholder="search..."
@@ -58,14 +58,14 @@
         }}
     />
     <button
-        class="searchBtn flex items-center justify-center rounded-md bg-transparent hover:bg-zinc-200 hover:dark:bg-zinc-700 border-0 p-1 h-12 w-12 cursor-pointer"
+        class="searchBtn flex items-center justify-center rounded-md bg-transparent border-0 p-1 h-12 w-12 cursor-pointer hover:bg-hover hover:[&_svg]:fill-accent"
         aria-label="Search..."
         title="Search..."
         bind:this={searchBtn}
         on:click={search}
     >
         <svg
-            class="svgIcon w-9 h-9"
+            class="svgIcon w-9 h-9 fill-text"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 640 640"
             ><!--!Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path
@@ -76,11 +76,11 @@
 </div>
 {#if suggestions.length > 0}
     <div
-        class="SearchSuggestions flex flex-col items-start justify-center w-[calc(100vw-5%)] h-auto sm:mx-0 sm:w-120 sm:w-max-120 bg-zinc-200 dark:bg-zinc-800 py-3 mb-3 rounded-md"
+        class="SearchSuggestions flex flex-col items-start justify-center w-[calc(100vw-5%)] h-auto sm:mx-0 sm:w-120 sm:w-max-120 py-3 mb-3 rounded-md"
     >
         {#each suggestions as suggestion}
             <span
-                class="w-full px-3 cursor-pointer hover:bg-zinc-300 hover:dark:bg-zinc-700"
+                class="w-full px-3 cursor-pointer"
                 on:click={() => {
                     query = suggestion.phrase;
                     search();

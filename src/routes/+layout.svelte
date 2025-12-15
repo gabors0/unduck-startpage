@@ -3,9 +3,11 @@
     import favicon from "$lib/assets/favicon.svg";
     import { onMount } from "svelte";
 
-    import { dev } from '$app/environment';
-    import { injectAnalytics } from '@vercel/analytics/sveltekit';
-    injectAnalytics({ mode: dev ? 'development' : 'production' });
+    import { dev } from "$app/environment";
+    import { injectAnalytics } from "@vercel/analytics/sveltekit";
+    import "$lib/stores/theme";
+
+    injectAnalytics({ mode: dev ? "development" : "production" });
 
     let { children } = $props();
 
@@ -44,7 +46,11 @@
 <style lang="postcss">
     @reference "../app.css";
     :global(body) {
-        @apply flex justify-center overflow-hidden h-screen text-zinc-900 dark:text-zinc-100 bg-zinc-100 dark:bg-zinc-900;
+        @apply flex justify-center overflow-hidden h-screen;
+        @apply text-text;
+        @apply bg-background;
+        @apply border-muted;
+
         height: var(--app-height, 100vh);
         font-family:
             "Inter",
@@ -59,29 +65,7 @@
             "Segoe UI Emoji",
             "Noto Color Emoji";
     }
-    :global(::selection) {
-        @apply bg-accent text-zinc-100 dark:text-zinc-900;
-    }
-    :global(a) {
-        @apply text-zinc-500 dark:text-zinc-500;
-        text-decoration: none;
-    }
-    :global(a:hover) {
-        @apply text-zinc-600 dark:text-zinc-400;
-    }
-    :global(a:active) {
-        @apply text-accent;
-    }
-    :global(.svgIcon) {
-        @apply fill-zinc-900 dark:fill-zinc-100;
-    }
-    :global(.svgIcon:not(a .svgIcon):hover) {
-        /*except a shortcut that has no icon :)*/
-        @apply fill-accent;
-    }
-    :global(input[type="text"], select) {
-        @apply bg-zinc-200 dark:bg-zinc-900 outline outline-zinc-700 text-zinc-900 dark:text-zinc-100;
-    }
+
     :global(input:focus, select:focus) {
         @apply outline-accent outline-2;
     }

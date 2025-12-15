@@ -12,16 +12,22 @@
             as="script"
         />-->
         <script>
-            // Prevent FOUC by applying theme immediately
             (function () {
-                const theme = localStorage.getItem("theme") || "system";
-                const isDark =
-                    theme === "dark" ||
-                    (theme === "system" &&
-                        window.matchMedia("(prefers-color-scheme: dark)")
-                            .matches);
-                if (isDark) {
-                    document.documentElement.classList.add("dark");
+                const validThemes = [
+                    "light",
+                    "dark",
+                    "nord",
+                    "catppuccin",
+                    "one-dark",
+                    "gruvbox",
+                ];
+                const stored = localStorage.getItem("theme");
+                const theme = validThemes.includes(stored ?? "")
+                    ? stored
+                    : "dark";
+
+                if (theme) {
+                    document.documentElement.setAttribute("data-theme", theme);
                 }
             })();
         </script>

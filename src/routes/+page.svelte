@@ -9,7 +9,7 @@
 
 <div class="flex flex-col justify-center items-center">
     {#if $titleMode === "clock"}
-            <Clock />
+        <Clock />
     {:else if $titleMode === "title"}
         <pre
             class="font-bold font-[monospace] select-none text-[8px] mb-3 sm:text-xs">
@@ -34,7 +34,7 @@ _/    _/  _/    _/  _/    _/  _/    _/  _/        _/  _/
     </div>
 </div>
 
-<footer class="absolute bottom-0 left-0 p-5">
+<footer class="absolute bottom-0 left-0 p-5 *:text-muted">
     <span>search powered by</span>
     <a href="https://unduck.link">unduck.link</a>
     <span class="seperator select-none">•</span>
@@ -45,10 +45,7 @@ _/    _/  _/    _/  _/    _/  _/    _/  _/        _/  _/
 
 <style lang="postcss">
     @reference "../app.css";
-    span {
-        @apply text-zinc-400 dark:text-zinc-500;
-    }
-    .seperator {
-        @apply text-zinc-400 dark:text-zinc-500;
+    a:hover {
+        @apply text-accent;
     }
 </style>

@@ -1,7 +1,55 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+@custom-variant nord (&:where([data-theme="nord"], [data-theme="nord"] *));
+@custom-variant catppuccin (&:where([data-theme="catppuccin"], [data-theme="catppuccin"] *));
+@custom-variant one-dark (&:where([data-theme="one-dark"], [data-theme="one-dark"] *));
+@custom-variant gruvbox (&:where([data-theme="gruvbox"], [data-theme="gruvbox"] *));
 
 @theme {
     --color-accent: oklch(0.7 0.1 192);
+    --color-background: oklch(96.7% 0.001 286.375);
+    --color-hover: oklch(92% 0.004 286.32);
+    --color-text: oklch(21% 0.006 285.885);
+    --color-muted: oklch(55.2% 0.016 285.938);
+}
+
+[data-theme="dark"] {
+    --color-accent: oklch(0.7 0.1 192);
+    --color-background: oklch(21% 0.006 285.885);
+    --color-hover: oklch(27.4% 0.006 286.033);
+    --color-text: oklch(96.7% 0.001 286.375);
+    --color-muted: oklch(70.5% 0.015 286.067);
+}
+
+[data-theme="nord"] {
+    --color-accent: oklch(0.7629 0.0477 194.49);
+    --color-background: oklch(0.3244 0.0229 264.18);
+    --color-hover: oklch(0.3792 0.029 266.47);
+    --color-text: oklch(0.9513 0.0074 260.73);
+    --color-muted: oklch(0.8993 0.0164 262.75);
+}
+
+[data-theme="catppuccin"] {
+    --color-accent: oklch(0.7715 0.1259 303.9);
+    --color-background: oklch(0.2788 0.0353 276.94);
+    --color-hover: oklch(0.3538 0.0369 275.99);
+    --color-text: oklch(0.8708 0.0481 273.67);
+    --color-muted: oklch(0.7513 0.0441 273.53);
+}
+
+[data-theme="one-dark"] {
+    --color-accent: oklch(0.6562 0.1826 262.74);
+    --color-background: oklch(0.2804 0.0158 264.28);
+    --color-hover: oklch(0.319 0.0158 264.28);
+    --color-text: oklch(0.8452 0 0);
+    --color-muted: oklch(0.7255 0 0);
+}
+
+[data-theme="gruvbox"] {
+    --color-accent: oklch(0.8325 0.1595 82.99);
+    --color-background: oklch(0.2768 0 0);
+    --color-hover: oklch(0.3441 0.0066 48.52);
+    --color-text: oklch(0.8941 0.0566 89.24);
+    --color-muted: oklch(0.7564 0.041 82.28);
 }

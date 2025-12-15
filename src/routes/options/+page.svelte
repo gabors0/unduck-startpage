@@ -4,7 +4,7 @@
         useSuggestions,
         titleMode,
         clockFont,
-        titleText
+        titleText,
     } from "$lib/stores/options";
     import { theme, type Theme } from "$lib/stores/theme";
     import { shortcuts } from "$lib/stores/shortcuts";
@@ -81,7 +81,7 @@
 >
     <section>
         <h1 class="text-2xl">theme</h1>
-        <div class="flex p-3 gap-x-4">
+        <div class="flex p-3 gap-x-4 flex-wrap">
             <label class="flex items-center cursor-pointer">
                 <input
                     type="radio"
@@ -104,16 +104,51 @@
                 />
                 <span class:underline={$theme === "dark"}>dark</span>
             </label>
+
             <label class="flex items-center cursor-pointer">
                 <input
                     type="radio"
                     name="theme"
-                    value="system"
-                    checked={$theme === "system"}
-                    onchange={() => theme.set("system")}
+                    value="nord"
+                    checked={$theme === "nord"}
+                    onchange={() => theme.set("nord")}
                     class="cursor-pointer hidden"
                 />
-                <span class:underline={$theme === "system"}>system</span>
+                <span class:underline={$theme === "nord"}>nord</span>
+            </label>
+            <label class="flex items-center cursor-pointer">
+                <input
+                    type="radio"
+                    name="theme"
+                    value="catppuccin"
+                    checked={$theme === "catppuccin"}
+                    onchange={() => theme.set("catppuccin")}
+                    class="cursor-pointer hidden"
+                />
+                <span class:underline={$theme === "catppuccin"}>catppuccin</span
+                >
+            </label>
+            <label class="flex items-center cursor-pointer">
+                <input
+                    type="radio"
+                    name="theme"
+                    value="one-dark"
+                    checked={$theme === "one-dark"}
+                    onchange={() => theme.set("one-dark")}
+                    class="cursor-pointer hidden"
+                />
+                <span class:underline={$theme === "one-dark"}>one-dark</span>
+            </label>
+            <label class="flex items-center cursor-pointer">
+                <input
+                    type="radio"
+                    name="theme"
+                    value="gruvbox"
+                    checked={$theme === "gruvbox"}
+                    onchange={() => theme.set("gruvbox")}
+                    class="cursor-pointer hidden"
+                />
+                <span class:underline={$theme === "gruvbox"}>gruvbox</span>
             </label>
         </div>
     </section>
@@ -129,8 +164,7 @@
                     onchange={() => titleMode.set("clock")}
                     class="cursor-pointer hidden"
                 />
-                <span class:underline={$titleMode === "clock"}>clock</span
-                >
+                <span class:underline={$titleMode === "clock"}>clock</span>
             </label>
             <label class="flex items-center cursor-pointer">
                 <input
@@ -166,12 +200,17 @@
             </label>
         </div>
     </section>
-    
+
     {#if $titleMode === "clock"}
         <section>
             <h1 class="text-2xl">clock font</h1>
             <div class="flex p-3 gap-x-4">
-                <select bind:value={$clockFont} name="asciiFont" id="asciiFont" class="cursor-pointer p-3 rounded-md text-zinc-900 dark:text-zinc-100 bg-zinc-100 dark:bg-zinc-900">
+                <select
+                    bind:value={$clockFont}
+                    name="asciiFont"
+                    id="asciiFont"
+                    class="cursor-pointer p-3 rounded-md"
+                >
                     <option value="Alligator2">Alligator2</option>
                     <option value="Banner3">Banner3 (easier to read)</option>
                     <option value="Slant">Slant</option>
@@ -188,11 +227,18 @@
                 <i class="opacity-50">max. 48 characters</i>
             </div>
             <div class="flex p-3 gap-x-4">
-                <input bind:value={$titleText} onchange={() => titleText.set($titleText)} type="text" maxlength="48" placeholder="unduck" class="w-32 border-0 rounded-md p-2">
+                <input
+                    bind:value={$titleText}
+                    onchange={() => titleText.set($titleText)}
+                    type="text"
+                    maxlength="48"
+                    placeholder="unduck"
+                    class="w-32 border-0 rounded-md p-2"
+                />
             </div>
         </section>
     {/if}
-    
+
     <section>
         <h1 class="text-2xl">search suggestions</h1>
         <div class="flex p-3 gap-x-4">
@@ -286,7 +332,7 @@
         <div class="px-3 gap-4 w-lg flex flex-wrap">
             {#each $shortcuts as shortcut, i}
                 <div
-                    class="flex justify-between rounded-md *:m-2 hover:bg items-center hover:bg-zinc-200 hover:dark:bg-zinc-700"
+                    class="flex justify-between rounded-md *:m-2 hover:bg items-center"
                 >
                     {#if shortcut.icon}
                         <img
@@ -318,13 +364,23 @@
 
 <style lang="postcss">
     @reference "../../app.css";
+    span {
+        @apply text-muted;
+    }
+    input {
+        @apply outline-muted/50 outline-1;
+    }
     input.success {
         @apply outline-green-700 outline-3 dark:outline-green-600;
     }
     input.error {
         @apply outline-red-700 outline-3 dark:outline-red-700;
     }
-    span {
-        @apply text-zinc-600 dark:text-zinc-300;
+    select {
+        @apply text-text bg-background outline-muted/50 outline-1;
+    }
+    select option {
+        color: var(--color-text);
+        background-color: var(--color-background);
     }
 </style>
