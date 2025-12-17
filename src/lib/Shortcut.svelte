@@ -15,7 +15,7 @@
 
 <a
     href={url}
-    class="w-16 h-16 sm:w-24 sm:h-24 flex flex-col justify-center items-center rounded-md hover:bg-hover hover:text-accent hover:[&_svg]:fill-accent"
+    class="w-16 h-16 sm:w-24 sm:h-24 flex flex-col justify-center items-center rounded-md hover:bg-hover hover:text-accent hover:[&_svg]:fill-accent active:bg-accent active:text-background active:[&_svg]:fill-background"
 >
     {#if validUrl && !imgFailed}
         <img

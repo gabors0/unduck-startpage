@@ -5,6 +5,7 @@
     import { shortcuts } from "$lib/stores/shortcuts";
     import { titleMode } from "$lib/stores/options";
     import { titleText } from "$lib/stores/options";
+    import { suggestionsVisible } from "$lib/stores/suggestions";
 </script>
 
 <header class="absolute bottom-0 right-0 z-99 p-5 *:text-muted">
@@ -29,15 +30,17 @@ _/    _/  _/    _/  _/    _/  _/    _/  _/        _/  _/
         <h1 class="text-5xl">{$titleText}</h1>
     {:else}{/if}
     <Searchbar />
-    <div class="flex justify-center max-w-[48rem] gap-4 flex-row flex-wrap">
-        {#each $shortcuts as shortcut}
-            <Shortcut
-                title={shortcut.title}
-                url={shortcut.url}
-                icon={shortcut.icon}
-            />
-        {/each}
-    </div>
+    {#if !$suggestionsVisible}
+        <div class="flex justify-center max-w-[48rem] gap-4 flex-row flex-wrap">
+            {#each $shortcuts as shortcut}
+                <Shortcut
+                    title={shortcut.title}
+                    url={shortcut.url}
+                    icon={shortcut.icon}
+                />
+            {/each}
+        </div>
+    {/if}
 </div>
 
 <footer class="absolute bottom-0 left-0 p-5 *:text-muted [&_a]:hover:text-accent">

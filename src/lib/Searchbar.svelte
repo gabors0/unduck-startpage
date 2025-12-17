@@ -1,5 +1,6 @@
 <script lang="ts">
     import { selectedBang, useSuggestions } from "$lib/stores/options";
+    import { suggestionsVisible } from "$lib/stores/suggestions";
 
     let query = "";
     let searchBtn;
@@ -10,6 +11,8 @@
     $: if (!$useSuggestions) {
         suggestions = [];
     }
+
+    $: suggestionsVisible.set(suggestions.length > 0);
 
     const search = () => {
         if (query) {
