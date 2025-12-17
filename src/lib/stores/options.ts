@@ -80,6 +80,26 @@ if (typeof window !== "undefined") {
   });
 }
 
+// init show date
+const getInitialDateValue = () => {
+  if (typeof window !== "undefined") {
+    const stored = localStorage.getItem("showDate");
+    if (stored === "true") {
+      return true;
+    }
+  }
+  return false;
+};
+
+export const showDate = writable(getInitialDateValue());
+
+// show date localstorage
+if (typeof window !== "undefined") {
+  showDate.subscribe((value) => {
+    localStorage.setItem("showDate", String(value));
+  });
+}
+
 //init title text
 const getInitialTitleTextValue = () => {
   if (typeof window !== "undefined") {

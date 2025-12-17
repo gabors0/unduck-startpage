@@ -18,7 +18,7 @@
         <Clock />
     {:else if $titleMode === "title"}
         <pre
-            class="font-bold font-[monospace] select-none text-[8px] mb-3 sm:text-xs">
+            class="font-bold font-mono select-none text-[8px] mb-3 sm:text-xs">
                              _/                      _/
   _/    _/  _/_/_/      _/_/_/  _/    _/    _/_/_/  _/  _/
  _/    _/  _/    _/  _/    _/  _/    _/  _/        _/_/
