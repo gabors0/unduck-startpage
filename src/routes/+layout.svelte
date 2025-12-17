@@ -27,6 +27,13 @@
 </script>
 
 <svelte:head>
+    <!-- avoid flash -->
+    <script>
+        if (typeof window !== 'undefined') {
+            const theme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+        }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
         rel="preconnect"

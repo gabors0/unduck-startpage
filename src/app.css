@@ -1,10 +1,12 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+@custom-variant amoled (&:where([data-theme="amoled"], [data-theme="amoled"] *));
 @custom-variant nord (&:where([data-theme="nord"], [data-theme="nord"] *));
 @custom-variant catppuccin (&:where([data-theme="catppuccin"], [data-theme="catppuccin"] *));
 @custom-variant one-dark (&:where([data-theme="one-dark"], [data-theme="one-dark"] *));
 @custom-variant gruvbox (&:where([data-theme="gruvbox"], [data-theme="gruvbox"] *));
+@custom-variant terminal (&:where([data-theme="terminal"], [data-theme="terminal"] *));
 
 @theme {
     --color-accent: oklch(0.7 0.1 192);
@@ -20,6 +22,14 @@
     --color-hover: oklch(27.4% 0.006 286.033);
     --color-text: oklch(96.7% 0.001 286.375);
     --color-muted: oklch(70.5% 0.015 286.067);
+}
+
+[data-theme="amoled"] {
+    --color-accent: oklch(0.7 0.1 192);
+    --color-background: oklch(0 0 0);
+    --color-hover: oklch(0.2 0 0);
+    --color-text: oklch(0.95 0 0);
+    --color-muted: oklch(0.65 0 0);
 }
 
 [data-theme="nord"] {
@@ -52,4 +62,12 @@
     --color-hover: oklch(0.3441 0.0066 48.52);
     --color-text: oklch(0.8941 0.0566 89.24);
     --color-muted: oklch(0.7564 0.041 82.28);
+}
+
+[data-theme="terminal"] {
+    --color-accent: oklch(0.73 0.2861 145);
+    --color-background: oklch(0.1 0 0);
+    --color-hover: oklch(0.1 0 0);
+    --color-text: oklch(0.73 0.2861 145);
+    --color-muted: oklch(0.53 0.2861 145);
 }

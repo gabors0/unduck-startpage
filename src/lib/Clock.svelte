@@ -15,13 +15,12 @@
             minute: "2-digit",
             second: "2-digit",
         });
-    
+
         if (timeString !== currentTime) {
             currentTime = timeString;
             if ($clockFont == "none") {
                 clock = timeString;
                 isBasic = true;
-                
             } else {
                 figlet.text(timeString, { font: $clockFont }, (err, result) => {
                     if (!err) {
@@ -42,5 +41,7 @@
 
 <div>
     <pre
-        class="text-center m-0 leading-none mb-3 select-none text-base {!isBasic ? "text-[8px] sm:text-[12px]" : "sm:text-7xl text-3xl" }">{clock}</pre>  
+        class="text-center m-0 leading-none mb-3 select-none text-base {!isBasic
+            ? 'text-[8px] sm:text-[12px]'
+            : 'sm:text-7xl text-3xl'}">{clock}</pre>
 </div>

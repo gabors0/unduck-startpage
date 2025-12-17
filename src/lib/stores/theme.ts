@@ -1,11 +1,11 @@
 import { writable } from "svelte/store";
 
-export type Theme = "light" | "dark" | "nord" | "catppuccin" | "one-dark" | "gruvbox";
+export type Theme = "light" | "dark" | "amoled" | "nord" | "catppuccin" | "one-dark" | "gruvbox" | "terminal";
 
 const getInitialTheme = (): Theme => {
   if (typeof window !== "undefined") {
     const stored = localStorage.getItem("theme") as Theme | null;
-    if (stored === "light" || stored === "dark" || stored === "nord" || stored === "catppuccin" || stored === "one-dark" || stored === "gruvbox") {
+    if (stored === "light" || stored === "dark" || stored === "amoled" || stored === "nord" || stored === "catppuccin" || stored === "one-dark" || stored === "gruvbox" || stored === "terminal") {
       return stored;
     }
   }
@@ -33,11 +33,13 @@ if (typeof window !== "undefined") {
 export const toggleTheme = () => {
   theme.update((current) => {
     if (current === "light") return "dark";
-    if (current === "dark") return "nord";
+    if (current === "dark") return "amoled";
+    if (current === "amoled") return "nord";
     if (current === "nord") return "catppuccin";
     if (current === "catppuccin") return "one-dark";
     if (current === "one-dark") return "gruvbox";
-    if (current === "gruvbox") return "light";
+    if (current === "gruvbox") return "terminal";
+    if (current === "terminal") return "light";
     return "dark";
   });
 };

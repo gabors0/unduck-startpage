@@ -109,6 +109,17 @@
                 <input
                     type="radio"
                     name="theme"
+                    value="amoled"
+                    checked={$theme === "amoled"}
+                    onchange={() => theme.set("amoled")}
+                    class="cursor-pointer hidden"
+                />
+                <span class:underline={$theme === "amoled"}>amoled</span>
+            </label>
+            <label class="flex items-center cursor-pointer">
+                <input
+                    type="radio"
+                    name="theme"
                     value="nord"
                     checked={$theme === "nord"}
                     onchange={() => theme.set("nord")}
@@ -149,6 +160,17 @@
                     class="cursor-pointer hidden"
                 />
                 <span class:underline={$theme === "gruvbox"}>gruvbox</span>
+            </label>
+            <label class="flex items-center cursor-pointer">
+                <input
+                    type="radio"
+                    name="theme"
+                    value="terminal"
+                    checked={$theme === "terminal"}
+                    onchange={() => theme.set("terminal")}
+                    class="cursor-pointer hidden"
+                />
+                <span class:underline={$theme === "terminal"}>terminal</span>
             </label>
         </div>
     </section>
@@ -359,14 +381,13 @@
             {/each}
         </div>
     </section>
-    <a class="text-left pr-3 text-muted hover:text-accent" href="/">back to search &gt;</a>
+    <a class="text-left pr-3 text-muted hover:text-accent" href="/"
+        >back to search &gt;</a
+    >
 </div>
 
 <style lang="postcss">
     @reference "../../app.css";
-    span {
-        @apply text-muted;
-    }
     input {
         @apply outline-muted/50 outline-1;
     }
