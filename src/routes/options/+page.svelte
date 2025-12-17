@@ -391,6 +391,9 @@
     input {
         @apply outline-muted/50 outline-1;
     }
+    input:focus, select:focus {
+        @apply outline-accent outline-2;
+    }
     input.success {
         @apply outline-green-700 outline-3 dark:outline-green-600;
     }

@@ -57,6 +57,7 @@
         @apply text-text;
         @apply bg-background;
         @apply border-muted;
+        @apply transition-colors duration-300 ease-in-out;
 
         height: var(--app-height, 100vh);
         font-family:
@@ -84,10 +85,7 @@
     :global(::selection, ::-moz-selection) {
         @apply bg-accent text-background;
     }
-
-    :global(input:focus, select:focus) {
-        @apply outline-accent outline-2;
-    }
+    
     :global(button:hover, label > span:hover) {
         @apply text-accent;
     }

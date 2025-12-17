@@ -16,10 +16,12 @@
                 const validThemes = [
                     "light",
                     "dark",
+                    "amoled",
                     "nord",
                     "catppuccin",
                     "one-dark",
                     "gruvbox",
+                    "terminal",
                 ];
                 const stored = localStorage.getItem("theme");
                 const theme = validThemes.includes(stored ?? "")

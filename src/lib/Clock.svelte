@@ -41,7 +41,5 @@
 
 <div>
     <pre
-        class="text-center m-0 leading-none mb-3 select-none text-base {!isBasic
-            ? 'text-[8px] sm:text-[12px]'
-            : 'sm:text-7xl text-3xl'}">{clock}</pre>
+        class="text-center m-0 leading-none mb-3 select-none text-base {isBasic ? 'sm:text-8xl max-sm:text-4xl' : 'sm:text-[12px] max-sm:text-[8px]'}">{clock}</pre>
 </div>
