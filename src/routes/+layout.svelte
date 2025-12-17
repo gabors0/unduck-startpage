@@ -10,20 +10,6 @@
     injectAnalytics({ mode: dev ? "development" : "production" });
 
     let { children } = $props();
-
-    onMount(() => {
-        function setAppHeight() {
-            document.documentElement.style.setProperty(
-                "--app-height",
-                `${window.innerHeight}px`,
-            );
-        }
-
-        setAppHeight();
-        window.addEventListener("resize", setAppHeight);
-
-        return () => window.removeEventListener("resize", setAppHeight);
-    });
 </script>
 
 <svelte:head>
@@ -46,13 +32,13 @@
 <style lang="postcss">
     @reference "../app.css";
     :global(body) {
-        @apply flex justify-center overflow-hidden h-screen;
+        @apply flex justify-center h-screen;
         @apply text-text;
         @apply bg-background;
         @apply border-muted;
         @apply transition-colors duration-300 ease-in-out;
 
-        height: var(--app-height, 100vh);
+        min-height: 100svh, 100vh;
         font-family:
             "Inter",
             system-ui,
