@@ -20,3 +20,5 @@
 - [ ] Bang suggestions/display
 - [ ] Maybe weather??
 - [ ] Make the website search not powered by Unduck (but by this website itself)
+---
+![screenshot](https://github.com/gabors0/unduck-startpage/blob/main/static/assets/screenshot.png)
