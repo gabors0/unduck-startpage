@@ -5,7 +5,6 @@
         titleMode,
         clockFont,
         titleText,
-        showDate
     } from "$lib/stores/options";
     import { theme, type Theme } from "$lib/stores/theme";
     import { shortcuts } from "$lib/stores/shortcuts";
@@ -13,7 +12,6 @@
     let input = $state("");
     let isUnsuccessfulBang = $state(false);
     let isSuccessfulBang = $state(false);
-    
 
     //bangs
     function setDefaultBang(value: string) {
@@ -239,33 +237,7 @@
                     <option value="Banner3">Banner3 (easier to read)</option>
                     <option value="Slant">Slant</option>
                     <option value="none">basic (no figlet)</option>
-                    <option value="off">none (just date)</option>
                 </select>
-            </div>
-        </section>
-        <section>
-            <h1 class="text-2xl">show date</h1>
-            <div class="flex p-3 gap-x-4">
-                <label class="flex items-center cursor-pointer">
-                    <input
-                        type="radio"
-                        name="showDate"
-                        value="on"
-                        onchange={() => showDate.set(true)}
-                        class="cursor-pointer hidden"
-                    />
-                    <span class:underline={$showDate === true}>on</span>
-                </label>
-                <label class="flex items-center cursor-pointer">
-                    <input
-                        type="radio"
-                        name="showDate"
-                        value="off"
-                        onchange={() => showDate.set(false)}
-                        class="cursor-pointer hidden"
-                    />
-                    <span class:underline={$showDate === false}>off</span>
-                </label>
             </div>
         </section>
     {/if}
@@ -274,7 +246,7 @@
         <section>
             <div class="flex gap-x-4 items-center flex-row">
                 <h1 class="text-2xl">title text</h1>
-                <i class="opacity-50">max. 48 characters</i>
+                <i class="opacity-50">max. 48 characters, $L = logo</i>
             </div>
             <div class="flex p-3 gap-x-4">
                 <input
@@ -418,9 +390,6 @@
     @reference "../../app.css";
     input {
         @apply outline-muted/50 outline-1;
-    }
-    input:focus, select:focus {
-        @apply outline-accent outline-2;
     }
     input.success {
         @apply outline-green-700 outline-3 dark:outline-green-600;

@@ -108,7 +108,7 @@ const getInitialTitleTextValue = () => {
       return stored;
     }
   }
-  return "unduck";
+  return "unduck $L";
 };
 
 export const titleText = writable(getInitialTitleTextValue());
