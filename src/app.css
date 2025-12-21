@@ -87,7 +87,7 @@
 }
 
 [data-theme="nord"] {
-  --color-accent: oklch(0.7629 0.0477 194.49);
+  --color-accent: oklch(0.76 0.0477 194.49);
   --color-background: oklch(0.3244 0.0229 264.18);
   --color-hover: oklch(0.3792 0.029 266.47);
   --color-text: oklch(0.9513 0.0074 260.73);
@@ -95,7 +95,7 @@
 }
 
 [data-theme="catppuccin"] {
-  --color-accent: oklch(0.7715 0.1259 303.9);
+  --color-accent: oklch(0.77 0.1259 303.9);
   --color-background: oklch(0.2788 0.0353 276.94);
   --color-hover: oklch(0.3538 0.0369 275.99);
   --color-text: oklch(0.8708 0.0481 273.67);
@@ -103,7 +103,7 @@
 }
 
 [data-theme="one-dark"] {
-  --color-accent: oklch(0.6562 0.1826 262.74);
+  --color-accent: oklch(0.65 0.1826 262.74);
   --color-background: oklch(0.2804 0.0158 264.28);
   --color-hover: oklch(0.319 0.0158 264.28);
   --color-text: oklch(0.8452 0 0);
@@ -111,7 +111,7 @@
 }
 
 [data-theme="gruvbox"] {
-  --color-accent: oklch(0.8325 0.1595 82.99);
+  --color-accent: oklch(0.83 0.1595 82.99);
   --color-background: oklch(0.2768 0 0);
   --color-hover: oklch(0.3441 0.0066 48.52);
   --color-text: oklch(0.8941 0.0566 89.24);

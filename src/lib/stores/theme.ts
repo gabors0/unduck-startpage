@@ -32,14 +32,14 @@ const getInitialTheme = (): Theme => {
 const applyTheme = (theme: Theme) => {
   if (typeof window === "undefined") return;
   document.documentElement.setAttribute("data-theme", theme);
-  // Set theme-color meta tag to background color
+  // set theme-color meta tag to accent color
   setTimeout(() => {
     const bgColor = getComputedStyle(document.documentElement)
       .getPropertyValue("--color-accent")
       .trim();
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.setAttribute("content", bgColor);
-  }, 0);
+  }, 100);
 };
 
 export const theme = writable<Theme>(getInitialTheme());
