@@ -231,6 +231,7 @@
                     bind:value={$clockFont}
                     name="asciiFont"
                     id="asciiFont"
+                    aria-label="font to use for the clock"
                     class="cursor-pointer p-3 rounded-md"
                 >
                     <option value="Alligator2">Alligator2</option>
@@ -366,6 +367,7 @@
                     <p title={shortcut.url}>{shortcut.title}</p>
                     <button
                         class="cursor-pointer *:hover:fill-accent *:fill-text"
+                        aria-label="remove shortcut"
                         onclick={() => removeShortcut(i)}
                     >
                         <svg

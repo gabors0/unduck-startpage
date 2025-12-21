@@ -27,7 +27,9 @@
     <title>search</title>
 </svelte:head>
 
-{@render children?.()}
+<main>
+    {@render children?.()}
+</main>
 
 <style lang="postcss">
     @reference "../app.css";
