@@ -34,7 +34,7 @@
     <meta property="og:url" content="https://start.gs0.me/" />
     <meta property="og:title" content="unduck-startpage" />
     <meta property="og:description" content="a startpage for unduck" />
-    <meta property="og:image" content="https://start.gs0.me/card.webp" />
+    <meta property="og:image" content="https://start.gs0.me/assets/card.webp" />
     <meta property="og:site_name" content="unduck-startpage">
 
     <!-- xitter -->
@@ -42,7 +42,7 @@
     <meta property="twitter:url" content="https://start.gs0.me/" />
     <meta property="twitter:title" content="unduck-startpage" />
     <meta property="twitter:description" content="a startpage for unduck" />
-    <meta property="twitter:image" content="https://start.gs0.me/card.webp" />
+    <meta property="twitter:image" content="https://start.gs0.me/assets/card.webp" />
 
     <link rel="icon" href={favicon} />
     <title>search</title>
