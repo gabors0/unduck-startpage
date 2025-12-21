@@ -20,9 +20,30 @@
             document.documentElement.setAttribute('data-theme', theme);
         }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- meta tags -->
+    <title>gabors0</title>
+    <meta name="title" content="unduck-startpage" />
+    <meta name="description" content="a startpage for unduck" />
+    <meta name="author" content="gabors0" />
+    <meta name="keywords" content="unduck, search, startpage, bangs, searchpage, homepage" />
+    <meta name="theme-color" content="" />
+
+    <!-- open graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://start.gs0.me/" />
+    <meta property="og:title" content="unduck-startpage" />
+    <meta property="og:description" content="a startpage for unduck" />
+    <meta property="og:image" content="https://start.gs0.me/card.webp" />
+    <meta property="og:site_name" content="unduck-startpage">
+
+    <!-- xitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://start.gs0.me/" />
+    <meta property="twitter:title" content="unduck-startpage" />
+    <meta property="twitter:description" content="a startpage for unduck" />
+    <meta property="twitter:image" content="https://start.gs0.me/card.webp" />
+
     <link rel="icon" href={favicon} />
     <title>search</title>
 </svelte:head>
@@ -54,19 +75,19 @@
             "Segoe UI Emoji",
             "Noto Color Emoji";
     }
-    
+
     :global(*):focus {
       outline: none;
     }
-  
+
     :global(*):focus-visible {
         @apply outline-accent outline-1;
     }
-    
+
     :global(::selection, ::-moz-selection) {
         @apply bg-accent text-background;
     }
-    
+
     :global(button:hover, label > span:hover) {
         @apply text-accent;
     }
