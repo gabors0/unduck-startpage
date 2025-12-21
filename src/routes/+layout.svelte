@@ -27,7 +27,7 @@
     <title>search</title>
 </svelte:head>
 
-<main>
+<main class="flex items-center">
     {@render children?.()}
 </main>
 
