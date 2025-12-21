@@ -1,4 +1,4 @@
-# unduck-startpage
+# unduck-startpage | [start.gs0.me](https://start.gs0.me)
 
 > obviously this project searches using [unduck](https://github.com/T3-Content/unduck) that uses the MIT license <br>
 > also it was mainly created for learning svelte
