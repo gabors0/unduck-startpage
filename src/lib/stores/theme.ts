@@ -8,7 +8,10 @@ export type Theme =
   | "catppuccin"
   | "one-dark"
   | "gruvbox"
-  | "terminal";
+  | "terminal"
+  | "ayu-light"
+  | "ayu-dark"
+  | "ayu-mirage";
 
 const getInitialTheme = (): Theme => {
   if (typeof window !== "undefined") {
@@ -21,7 +24,10 @@ const getInitialTheme = (): Theme => {
       stored === "catppuccin" ||
       stored === "one-dark" ||
       stored === "gruvbox" ||
-      stored === "terminal"
+      stored === "terminal" ||
+      stored === "ayu-light" ||
+      stored === "ayu-dark" ||
+      stored === "ayu-mirage"
     ) {
       return stored;
     }
@@ -64,7 +70,10 @@ export const toggleTheme = () => {
     if (current === "catppuccin") return "one-dark";
     if (current === "one-dark") return "gruvbox";
     if (current === "gruvbox") return "terminal";
-    if (current === "terminal") return "light";
+    if (current === "terminal") return "ayu-light";
+    if (current === "ayu-light") return "ayu-dark";
+    if (current === "ayu-dark") return "ayu-mirage";
+    if (current === "ayu-mirage") return "light";
     return "dark";
   });
 };

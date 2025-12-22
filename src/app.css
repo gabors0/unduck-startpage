@@ -64,64 +64,80 @@
 @theme {
   --color-accent: oklch(0.7 0.1 192);
   --color-background: oklch(96.7% 0.001 286.375);
-  --color-hover: oklch(92% 0.004 286.32);
   --color-text: oklch(21% 0.006 285.885);
-  --color-muted: oklch(55.2% 0.016 285.938);
   --font-mono: "Space Mono", monospace;
+}
+
+/*
+[data-theme="example"] {
+  --color-accent: ;
+  --color-background: ;
+  --color-text: ;
+}
+*/
+
+[data-theme="light"] {
+  --color-accent: oklch(0.7 0.1 192);
+  --color-background: oklch(96.7% 0.001 286.375);
+  --color-text: oklch(21% 0.006 285.885);
 }
 
 [data-theme="dark"] {
   --color-accent: oklch(0.7 0.1 192);
   --color-background: oklch(21% 0.006 285.885);
-  --color-hover: oklch(27.4% 0.006 286.033);
   --color-text: oklch(96.7% 0.001 286.375);
-  --color-muted: oklch(70.5% 0.015 286.067);
 }
 
 [data-theme="amoled"] {
   --color-accent: oklch(0.7 0.1 192);
   --color-background: oklch(0 0 0);
-  --color-hover: oklch(0.2 0 0);
   --color-text: oklch(0.95 0 0);
-  --color-muted: oklch(0.65 0 0);
 }
 
 [data-theme="nord"] {
   --color-accent: oklch(0.76 0.0477 194.49);
   --color-background: oklch(0.3244 0.0229 264.18);
-  --color-hover: oklch(0.3792 0.029 266.47);
   --color-text: oklch(0.9513 0.0074 260.73);
-  --color-muted: oklch(0.8993 0.0164 262.75);
 }
 
 [data-theme="catppuccin"] {
   --color-accent: oklch(0.77 0.1259 303.9);
   --color-background: oklch(0.2788 0.0353 276.94);
-  --color-hover: oklch(0.3538 0.0369 275.99);
   --color-text: oklch(0.8708 0.0481 273.67);
-  --color-muted: oklch(0.7513 0.0441 273.53);
 }
 
 [data-theme="one-dark"] {
   --color-accent: oklch(0.65 0.1826 262.74);
   --color-background: oklch(0.2804 0.0158 264.28);
-  --color-hover: oklch(0.319 0.0158 264.28);
   --color-text: oklch(0.8452 0 0);
-  --color-muted: oklch(0.7255 0 0);
 }
 
 [data-theme="gruvbox"] {
   --color-accent: oklch(0.83 0.1595 82.99);
   --color-background: oklch(0.2768 0 0);
-  --color-hover: oklch(0.3441 0.0066 48.52);
   --color-text: oklch(0.8941 0.0566 89.24);
-  --color-muted: oklch(0.7564 0.041 82.28);
 }
 
 [data-theme="terminal"] {
   --color-accent: oklch(0.73 0.2861 145);
   --color-background: oklch(0.1 0 0);
-  --color-hover: oklch(0.1 0 0);
   --color-text: oklch(0.73 0.2861 145);
-  --color-muted: oklch(0.53 0.2861 145);
+}
+
+[data-theme="ayu-light"] {
+  --color-accent: #f2ae49;
+  --color-background: #fafafa;
+  --color-text: #6c7680;
+}
+
+[data-theme="ayu-mirage"] {
+  --color-accent: #ffb454;
+  --color-background: #191e2a;
+  --color-text: #cccac2;
+}
+
+[data-theme="ayu-dark"] {
+  --color-accent: #ffb454;
+  --color-background: #0f1419;
+  --color-text: #b3b1ad;
 }
