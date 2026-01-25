@@ -288,7 +288,7 @@
 <style lang="postcss">
   @reference "../../app.css";
   input {
-    @apply outline-neutral-500/20 outline-1;
+    @apply outline-text/20 outline-1;
   }
   input.success {
     @apply outline-green-700 outline-3 dark:outline-green-600;
@@ -297,7 +297,7 @@
     @apply outline-red-700 outline-3 dark:outline-red-700;
   }
   select {
-    @apply text-text bg-background outline-neutral-500/20 outline-1;
+    @apply text-text bg-background outline-text/20 outline-1;
   }
   select option {
     color: var(--color-text);

@@ -48,7 +48,7 @@
 <div
   class="searchBar flex items-center justify-between my-3 w-[calc(100vw-5%)] h-auto outline-1 p-1 rounded-lg sm:mx-0 sm:w-120 sm:w-max-120 {isFocused
     ? 'outline-accent'
-    : 'outline-neutral-500/20'}"
+    : 'outline-text/20'}"
   class:outline-2={isFocused}
 >
   <!-- svelte-ignore a11y_autofocus -->

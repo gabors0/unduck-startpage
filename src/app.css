@@ -141,3 +141,15 @@
   --color-background: #0f1419;
   --color-text: #b3b1ad;
 }
+
+[data-theme="steam"] {
+  --color-accent: #1a9fff;
+  --color-background: #171a21;
+  --color-text: #c7d5e0;
+}
+
+[data-theme="steam-old"] {
+  --color-accent: #b8a53d;
+  --color-background: #3f4738;
+  --color-text: #eff6ee;
+}

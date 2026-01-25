@@ -203,6 +203,40 @@
       >
         <Theme themeName="ayu-mirage" themeTitle="Ayu Mirage" />
       </label>
+
+      <input
+        type="radio"
+        id="theme-steam"
+        name="theme"
+        value="steam"
+        class="sr-only peer"
+        bind:group={$theme}
+      />
+      <label
+        for="theme-steam"
+        class="cursor-pointer {$theme === 'steam'
+          ? 'outline-accent outline-4'
+          : ''}"
+      >
+        <Theme themeName="steam" themeTitle="Steam" />
+      </label>
+
+      <input
+        type="radio"
+        id="theme-steam-old"
+        name="theme"
+        value="steam-old"
+        class="sr-only peer"
+        bind:group={$theme}
+      />
+      <label
+        for="theme-steam-old"
+        class="cursor-pointer {$theme === 'steam-old'
+          ? 'outline-accent outline-4'
+          : ''}"
+      >
+        <Theme themeName="steam-old" themeTitle="Steam 2003" />
+      </label>
     </section>
   </div>
 </div>

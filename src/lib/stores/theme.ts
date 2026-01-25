@@ -11,7 +11,9 @@ export type Theme =
   | "terminal"
   | "ayu-light"
   | "ayu-dark"
-  | "ayu-mirage";
+  | "ayu-mirage"
+  | "steam"
+  | "steam-old";
 
 const getInitialTheme = (): Theme => {
   if (typeof window !== "undefined") {
@@ -27,7 +29,9 @@ const getInitialTheme = (): Theme => {
       stored === "terminal" ||
       stored === "ayu-light" ||
       stored === "ayu-dark" ||
-      stored === "ayu-mirage"
+      stored === "ayu-mirage" ||
+      stored === "steam" ||
+      stored === "steam-old"
     ) {
       return stored;
     }
@@ -73,7 +77,9 @@ export const toggleTheme = () => {
     if (current === "terminal") return "ayu-light";
     if (current === "ayu-light") return "ayu-dark";
     if (current === "ayu-dark") return "ayu-mirage";
-    if (current === "ayu-mirage") return "light";
+    if (current === "ayu-mirage") return "steam";
+    if (current === "steam") return "steam-old";
+    if (current === "steam-old") return "light";
     return "dark";
   });
 };
