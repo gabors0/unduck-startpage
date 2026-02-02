@@ -17,13 +17,8 @@
         class="sr-only peer"
         bind:group={$theme}
       />
-      <label
-        for="theme-light"
-        class="cursor-pointer {$theme === 'light'
-          ? 'outline-accent outline-4'
-          : ''}"
-      >
-        <Theme themeName="light" themeTitle="Light" />
+      <label for="theme-light" class="cursor-pointer">
+        <Theme themeName="light" themeTitle="Light" active={$theme === 'light'} />
       </label>
 
       <input
@@ -34,13 +29,8 @@
         class="sr-only peer"
         bind:group={$theme}
       />
-      <label
-        for="theme-dark"
-        class="cursor-pointer {$theme === 'dark'
-          ? 'outline-accent outline-4'
-          : ''}"
-      >
-        <Theme themeName="dark" themeTitle="Dark" />
+      <label for="theme-dark" class="cursor-pointer">
+        <Theme themeName="dark" themeTitle="Dark" active={$theme === 'dark'} />
       </label>
 
       <input
@@ -51,13 +41,12 @@
         class="sr-only peer"
         bind:group={$theme}
       />
-      <label
-        for="theme-amoled"
-        class="cursor-pointer {$theme === 'amoled'
-          ? 'outline-accent outline-4'
-          : ''}"
-      >
-        <Theme themeName="amoled" themeTitle="Amoled" />
+      <label for="theme-amoled" class="cursor-pointer">
+        <Theme
+          themeName="amoled"
+          themeTitle="Amoled"
+          active={$theme === 'amoled'}
+        />
       </label>
     </section>
 
@@ -72,13 +61,28 @@
         class="sr-only peer"
         bind:group={$theme}
       />
-      <label
-        for="theme-ayu-light"
-        class="cursor-pointer {$theme === 'ayu-light'
-          ? 'outline-accent outline-4'
-          : ''}"
-      >
-        <Theme themeName="ayu-light" themeTitle="Ayu Light" />
+      <label for="theme-ayu-light" class="cursor-pointer">
+        <Theme
+          themeName="ayu-light"
+          themeTitle="Ayu Light"
+          active={$theme === 'ayu-light'}
+        />
+      </label>
+
+      <input
+        type="radio"
+        id="theme-catppuccin-light"
+        name="theme"
+        value="catppuccin-light"
+        class="sr-only peer"
+        bind:group={$theme}
+      />
+      <label for="theme-catppuccin-light" class="cursor-pointer">
+        <Theme
+          themeName="catppuccin-light"
+          themeTitle="Catppuccin Latte"
+          active={$theme === 'catppuccin-light'}
+        />
       </label>
     </section>
 
@@ -93,13 +97,8 @@
         class="sr-only peer"
         bind:group={$theme}
       />
-      <label
-        for="theme-nord"
-        class="cursor-pointer {$theme === 'nord'
-          ? 'outline-accent outline-4'
-          : ''}"
-      >
-        <Theme themeName="nord" themeTitle="Nord" />
+      <label for="theme-nord" class="cursor-pointer">
+        <Theme themeName="nord" themeTitle="Nord" active={$theme === 'nord'} />
       </label>
 
       <input
@@ -110,13 +109,12 @@
         class="sr-only peer"
         bind:group={$theme}
       />
-      <label
-        for="theme-gruvbox"
-        class="cursor-pointer {$theme === 'gruvbox'
-          ? 'outline-accent outline-4'
-          : ''}"
-      >
-        <Theme themeName="gruvbox" themeTitle="Gruvbox" />
+      <label for="theme-gruvbox" class="cursor-pointer">
+        <Theme
+          themeName="gruvbox"
+          themeTitle="Gruvbox"
+          active={$theme === 'gruvbox'}
+        />
       </label>
 
       <input
@@ -127,13 +125,12 @@
         class="sr-only peer"
         bind:group={$theme}
       />
-      <label
-        for="theme-one-dark"
-        class="cursor-pointer {$theme === 'one-dark'
-          ? 'outline-accent outline-4'
-          : ''}"
-      >
-        <Theme themeName="one-dark" themeTitle="One Dark" />
+      <label for="theme-one-dark" class="cursor-pointer">
+        <Theme
+          themeName="one-dark"
+          themeTitle="One Dark"
+          active={$theme === 'one-dark'}
+        />
       </label>
 
       <input
@@ -144,13 +141,12 @@
         class="sr-only peer"
         bind:group={$theme}
       />
-      <label
-        for="theme-catppuccin"
-        class="cursor-pointer {$theme === 'catppuccin'
-          ? 'outline-accent outline-4'
-          : ''}"
-      >
-        <Theme themeName="catppuccin" themeTitle="Catppuccin" />
+      <label for="theme-catppuccin" class="cursor-pointer">
+        <Theme
+          themeName="catppuccin"
+          themeTitle="Catppuccin"
+          active={$theme === 'catppuccin'}
+        />
       </label>
 
       <input
@@ -161,13 +157,12 @@
         class="sr-only peer"
         bind:group={$theme}
       />
-      <label
-        for="theme-terminal"
-        class="cursor-pointer {$theme === 'terminal'
-          ? 'outline-accent outline-4'
-          : ''}"
-      >
-        <Theme themeName="terminal" themeTitle="Terminal" />
+      <label for="theme-terminal" class="cursor-pointer">
+        <Theme
+          themeName="terminal"
+          themeTitle="Terminal"
+          active={$theme === 'terminal'}
+        />
       </label>
 
       <input
@@ -178,13 +173,12 @@
         class="sr-only peer"
         bind:group={$theme}
       />
-      <label
-        for="theme-ayu-dark"
-        class="cursor-pointer {$theme === 'ayu-dark'
-          ? 'outline-accent outline-4'
-          : ''}"
-      >
-        <Theme themeName="ayu-dark" themeTitle="Ayu Dark" />
+      <label for="theme-ayu-dark" class="cursor-pointer">
+        <Theme
+          themeName="ayu-dark"
+          themeTitle="Ayu Dark"
+          active={$theme === 'ayu-dark'}
+        />
       </label>
 
       <input
@@ -195,13 +189,12 @@
         class="sr-only peer"
         bind:group={$theme}
       />
-      <label
-        for="theme-ayu-mirage"
-        class="cursor-pointer {$theme === 'ayu-mirage'
-          ? 'outline-accent outline-4'
-          : ''}"
-      >
-        <Theme themeName="ayu-mirage" themeTitle="Ayu Mirage" />
+      <label for="theme-ayu-mirage" class="cursor-pointer">
+        <Theme
+          themeName="ayu-mirage"
+          themeTitle="Ayu Mirage"
+          active={$theme === 'ayu-mirage'}
+        />
       </label>
 
       <input
@@ -212,13 +205,8 @@
         class="sr-only peer"
         bind:group={$theme}
       />
-      <label
-        for="theme-steam"
-        class="cursor-pointer {$theme === 'steam'
-          ? 'outline-accent outline-4'
-          : ''}"
-      >
-        <Theme themeName="steam" themeTitle="Steam" />
+      <label for="theme-steam" class="cursor-pointer">
+        <Theme themeName="steam" themeTitle="Steam" active={$theme === 'steam'} />
       </label>
 
       <input
@@ -229,13 +217,12 @@
         class="sr-only peer"
         bind:group={$theme}
       />
-      <label
-        for="theme-steam-old"
-        class="cursor-pointer {$theme === 'steam-old'
-          ? 'outline-accent outline-4'
-          : ''}"
-      >
-        <Theme themeName="steam-old" themeTitle="Steam 2003" />
+      <label for="theme-steam-old" class="cursor-pointer">
+        <Theme
+          themeName="steam-old"
+          themeTitle="Steam 2003"
+          active={$theme === 'steam-old'}
+        />
       </label>
     </section>
   </div>

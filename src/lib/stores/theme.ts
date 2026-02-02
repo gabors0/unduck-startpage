@@ -6,6 +6,7 @@ export type Theme =
   | "amoled"
   | "nord"
   | "catppuccin"
+  | "catppuccin-light"
   | "one-dark"
   | "gruvbox"
   | "terminal"
@@ -24,6 +25,7 @@ const getInitialTheme = (): Theme => {
       stored === "amoled" ||
       stored === "nord" ||
       stored === "catppuccin" ||
+      stored === "catppuccin-light" ||
       stored === "one-dark" ||
       stored === "gruvbox" ||
       stored === "terminal" ||
@@ -63,28 +65,3 @@ if (typeof window !== "undefined") {
     applyTheme(value);
   });
 }
-
-// Helper function to toggle between themes
-export const toggleTheme = () => {
-  theme.update((current) => {
-    if (current === "light") return "dark";
-    if (current === "dark") return "amoled";
-    if (current === "amoled") return "nord";
-    if (current === "nord") return "catppuccin";
-    if (current === "catppuccin") return "one-dark";
-    if (current === "one-dark") return "gruvbox";
-    if (current === "gruvbox") return "terminal";
-    if (current === "terminal") return "ayu-light";
-    if (current === "ayu-light") return "ayu-dark";
-    if (current === "ayu-dark") return "ayu-mirage";
-    if (current === "ayu-mirage") return "steam";
-    if (current === "steam") return "steam-old";
-    if (current === "steam-old") return "light";
-    return "dark";
-  });
-};
-
-// Helper to set specific theme
-export const setTheme = (newTheme: Theme) => {
-  theme.set(newTheme);
-};

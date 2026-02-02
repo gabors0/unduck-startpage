@@ -53,14 +53,6 @@
 }
 
 /*themes*/
-@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
-@custom-variant amoled (&:where([data-theme="amoled"], [data-theme="amoled"] *));
-@custom-variant nord (&:where([data-theme="nord"], [data-theme="nord"] *));
-@custom-variant catppuccin (&:where([data-theme="catppuccin"], [data-theme="catppuccin"] *));
-@custom-variant one-dark (&:where([data-theme="one-dark"], [data-theme="one-dark"] *));
-@custom-variant gruvbox (&:where([data-theme="gruvbox"], [data-theme="gruvbox"] *));
-@custom-variant terminal (&:where([data-theme="terminal"], [data-theme="terminal"] *));
-
 @theme {
   --color-accent: oklch(0.7 0.1 192);
   --color-background: oklch(96.7% 0.001 286.375);
@@ -104,6 +96,12 @@
   --color-accent: oklch(0.77 0.1259 303.9);
   --color-background: oklch(0.2788 0.0353 276.94);
   --color-text: oklch(0.8708 0.0481 273.67);
+}
+
+[data-theme="catppuccin-light"] {
+  --color-accent: #7287fd;
+  --color-background: #eff1f5;
+  --color-text: #4c4f69;
 }
 
 [data-theme="one-dark"] {
