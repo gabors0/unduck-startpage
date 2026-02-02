@@ -84,6 +84,22 @@
           active={$theme === 'catppuccin-light'}
         />
       </label>
+
+            <input
+        type="radio"
+        id="theme-solarized-light"
+        name="theme"
+        value="solarized-light"
+        class="sr-only peer"
+        bind:group={$theme}
+      />
+      <label for="theme-solarized-light" class="cursor-pointer">
+        <Theme
+          themeName="solarized-light"
+          themeTitle="Solarized Light"
+          active={$theme === 'solarized-light'}
+        />
+      </label>
     </section>
 
     <section>
@@ -194,6 +210,22 @@
           themeName="ayu-mirage"
           themeTitle="Ayu Mirage"
           active={$theme === 'ayu-mirage'}
+        />
+      </label>
+
+            <input
+        type="radio"
+        id="theme-solarized"
+        name="theme"
+        value="solarized"
+        class="sr-only peer"
+        bind:group={$theme}
+      />
+      <label for="theme-solarized" class="cursor-pointer">
+        <Theme
+          themeName="solarized"
+          themeTitle="Solarized"
+          active={$theme === 'solarized'}
         />
       </label>
 

@@ -14,7 +14,9 @@ export type Theme =
   | "ayu-dark"
   | "ayu-mirage"
   | "steam"
-  | "steam-old";
+  | "steam-old"
+  | "solarized"
+  | "solarized-light";
 
 const getInitialTheme = (): Theme => {
   if (typeof window !== "undefined") {
@@ -33,7 +35,9 @@ const getInitialTheme = (): Theme => {
       stored === "ayu-dark" ||
       stored === "ayu-mirage" ||
       stored === "steam" ||
-      stored === "steam-old"
+      stored === "steam-old" ||
+      stored === "solarized" ||
+      stored === "solarized-light"
     ) {
       return stored;
     }

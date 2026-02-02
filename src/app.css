@@ -151,3 +151,15 @@
   --color-background: #3f4738;
   --color-text: #eff6ee;
 }
+
+[data-theme="solarized"] {
+  --color-accent: #b58a00;
+  --color-background: #073542;
+  --color-text: #93a1a1;
+}
+
+[data-theme="solarized-light"] {
+  --color-accent: #b58a00;
+  --color-background: #fdf6e3;
+  --color-text: #576e74;
+}
