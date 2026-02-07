@@ -1,6 +1,8 @@
-# unduck-startpage | [start.gs0.me](https://start.gs0.me)
+<h1 align="center">unduck-startpage</h1>
+<h3 align="center"><a href="https://search.gs0.me">search.gs0.me</a></h3> <br>
 
-> obviously this project searches using [unduck](https://github.com/T3-Content/unduck) that uses the MIT license <br>
+> [!NOTE]
+> obviously this project searches using [unduck](https://github.com/T3-Content/unduck) that uses the MIT license, <br>
 > also it was mainly created for learning svelte
 
 **Todo**

@@ -10,7 +10,7 @@
   $: titleParts = $titleText.split("$L");
 </script>
 
-<div class="flex flex-col justify-center items-center">
+<div class="flex flex-col h-screen justify-center items-center">
   {#if $titleMode === "clock"}
     <Clock />
   {:else if $titleMode === "title"}

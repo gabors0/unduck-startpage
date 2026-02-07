@@ -3,9 +3,9 @@
   import { theme } from "$lib/stores/theme";
 </script>
 
-<div class="flex flex-col">
+<div class="flex flex-col md:h-screen py-16 md:p-0 items-center justify-center">
   <i class="text-center opacity-50">more themes coming soon</i>
-  <div class="w-full grid grid-cols-1 sm:grid-cols-3 gap-3 p-3">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 p-3">
     <section>
       <!-- default -->
       <h1 class="text-2xl text-center mb-2">default</h1>
@@ -18,7 +18,11 @@
         bind:group={$theme}
       />
       <label for="theme-light" class="cursor-pointer">
-        <Theme themeName="light" themeTitle="Light" active={$theme === 'light'} />
+        <Theme
+          themeName="light"
+          themeTitle="Light"
+          active={$theme === "light"}
+        />
       </label>
 
       <input
@@ -30,7 +34,7 @@
         bind:group={$theme}
       />
       <label for="theme-dark" class="cursor-pointer">
-        <Theme themeName="dark" themeTitle="Dark" active={$theme === 'dark'} />
+        <Theme themeName="dark" themeTitle="Dark" active={$theme === "dark"} />
       </label>
 
       <input
@@ -45,7 +49,7 @@
         <Theme
           themeName="amoled"
           themeTitle="Amoled"
-          active={$theme === 'amoled'}
+          active={$theme === "amoled"}
         />
       </label>
     </section>
@@ -65,7 +69,7 @@
         <Theme
           themeName="ayu-light"
           themeTitle="Ayu Light"
-          active={$theme === 'ayu-light'}
+          active={$theme === "ayu-light"}
         />
       </label>
 
@@ -81,11 +85,11 @@
         <Theme
           themeName="catppuccin-light"
           themeTitle="Catppuccin Latte"
-          active={$theme === 'catppuccin-light'}
+          active={$theme === "catppuccin-light"}
         />
       </label>
 
-            <input
+      <input
         type="radio"
         id="theme-solarized-light"
         name="theme"
@@ -97,7 +101,7 @@
         <Theme
           themeName="solarized-light"
           themeTitle="Solarized Light"
-          active={$theme === 'solarized-light'}
+          active={$theme === "solarized-light"}
         />
       </label>
     </section>
@@ -114,7 +118,7 @@
         bind:group={$theme}
       />
       <label for="theme-nord" class="cursor-pointer">
-        <Theme themeName="nord" themeTitle="Nord" active={$theme === 'nord'} />
+        <Theme themeName="nord" themeTitle="Nord" active={$theme === "nord"} />
       </label>
 
       <input
@@ -129,7 +133,7 @@
         <Theme
           themeName="gruvbox"
           themeTitle="Gruvbox"
-          active={$theme === 'gruvbox'}
+          active={$theme === "gruvbox"}
         />
       </label>
 
@@ -145,7 +149,7 @@
         <Theme
           themeName="one-dark"
           themeTitle="One Dark"
-          active={$theme === 'one-dark'}
+          active={$theme === "one-dark"}
         />
       </label>
 
@@ -161,7 +165,7 @@
         <Theme
           themeName="catppuccin"
           themeTitle="Catppuccin"
-          active={$theme === 'catppuccin'}
+          active={$theme === "catppuccin"}
         />
       </label>
 
@@ -177,7 +181,7 @@
         <Theme
           themeName="terminal"
           themeTitle="Terminal"
-          active={$theme === 'terminal'}
+          active={$theme === "terminal"}
         />
       </label>
 
@@ -193,7 +197,7 @@
         <Theme
           themeName="ayu-dark"
           themeTitle="Ayu Dark"
-          active={$theme === 'ayu-dark'}
+          active={$theme === "ayu-dark"}
         />
       </label>
 
@@ -209,11 +213,11 @@
         <Theme
           themeName="ayu-mirage"
           themeTitle="Ayu Mirage"
-          active={$theme === 'ayu-mirage'}
+          active={$theme === "ayu-mirage"}
         />
       </label>
 
-            <input
+      <input
         type="radio"
         id="theme-solarized"
         name="theme"
@@ -225,7 +229,7 @@
         <Theme
           themeName="solarized"
           themeTitle="Solarized"
-          active={$theme === 'solarized'}
+          active={$theme === "solarized"}
         />
       </label>
 
@@ -238,7 +242,11 @@
         bind:group={$theme}
       />
       <label for="theme-steam" class="cursor-pointer">
-        <Theme themeName="steam" themeTitle="Steam" active={$theme === 'steam'} />
+        <Theme
+          themeName="steam"
+          themeTitle="Steam"
+          active={$theme === "steam"}
+        />
       </label>
 
       <input
@@ -253,7 +261,7 @@
         <Theme
           themeName="steam-old"
           themeTitle="Steam 2003"
-          active={$theme === 'steam-old'}
+          active={$theme === "steam-old"}
         />
       </label>
     </section>
