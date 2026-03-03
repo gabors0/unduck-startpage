@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { autoFavicon } from "$lib/stores/options";
+
   export let icon;
   export let title;
   export let url;
@@ -10,10 +12,11 @@
     typeof icon === "string" && icon.trim() && icon.startsWith("http");
 
   $: faviconUrl = (() => {
+    if (!$autoFavicon) return "";
     try {
       const urlWithProtocol = url.startsWith("http") ? url : "http://" + url;
       const hostname = new URL(urlWithProtocol).hostname;
-      return `https://icons.duckduckgo.com/ip3/${hostname}.ico`;
+      return `https://www.google.com/s2/favicons?domain=${hostname}&sz=128`;
     } catch {
       return "";
     }
