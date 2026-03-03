@@ -4,12 +4,27 @@
   export let url;
 
   let imgFailed = false;
+  let faviconFailed = false;
 
   $: validUrl =
     typeof icon === "string" && icon.trim() && icon.startsWith("http");
 
+  $: faviconUrl = (() => {
+    try {
+      const urlWithProtocol = url.startsWith("http") ? url : "http://" + url;
+      const hostname = new URL(urlWithProtocol).hostname;
+      return `https://icons.duckduckgo.com/ip3/${hostname}.ico`;
+    } catch {
+      return "";
+    }
+  })();
+
   function handleError() {
     imgFailed = true;
+  }
+
+  function handleFaviconError() {
+    faviconFailed = true;
   }
 </script>
 
@@ -23,6 +38,13 @@
       alt=""
       class="w-8 h-8 sm:w-12 sm:h-12 object-cover"
       onerror={handleError}
+    />
+  {:else if faviconUrl && !faviconFailed}
+    <img
+      src={faviconUrl}
+      alt=""
+      class="w-8 h-8 sm:w-12 sm:h-12 object-cover"
+      onerror={handleFaviconError}
     />
   {:else}
     <svg

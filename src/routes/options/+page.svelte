@@ -238,7 +238,7 @@
         />
         <input
           bind:value={newIcon}
-          placeholder="icon url"
+          placeholder="icon url (optional)"
           type="text"
           class="w-32 border-0 rounded-md p-2"
         />
@@ -256,6 +256,18 @@
           >
             {#if shortcut.icon}
               <img src={shortcut.icon} alt="" class="w-8 h-8 object-cover" />
+            {:else}
+              {@const faviconUrl = (() => {
+                try {
+                  const u = shortcut.url.startsWith("http") ? shortcut.url : "http://" + shortcut.url;
+                  return `https://icons.duckduckgo.com/ip3/${new URL(u).hostname}.ico`;
+                } catch {
+                  return "";
+                }
+              })()}
+              {#if faviconUrl}
+                <img src={faviconUrl} alt="" class="w-8 h-8 object-cover" />
+              {/if}
             {/if}
             <p title={shortcut.url}>{shortcut.title}</p>
             <button
