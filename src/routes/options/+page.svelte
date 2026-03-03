@@ -5,6 +5,7 @@
     titleMode,
     clockFont,
     titleText,
+    autoFavicon,
   } from "$lib/stores/options";
   import { theme, type Theme } from "$lib/stores/theme";
   import { shortcuts } from "$lib/stores/shortcuts";
@@ -216,6 +217,33 @@
       </div>
     </section>
 
+    <section>
+      <h1 class="text-2xl">auto favicon</h1>
+      <div class="flex p-3 gap-x-4">
+        <label class="flex items-center cursor-pointer">
+          <input
+            type="radio"
+            name="autoFavicon"
+            value="yes"
+            onchange={() => autoFavicon.set(true)}
+            class="cursor-pointer hidden"
+          />
+          <span class:underline={$autoFavicon === true}>on</span>
+        </label>
+        <label class="flex items-center cursor-pointer">
+          <input
+            type="radio"
+            name="autoFavicon"
+            value="no"
+            onchange={() => autoFavicon.set(false)}
+            class="cursor-pointer hidden"
+          />
+          <span class:underline={$autoFavicon === false}>off</span>
+        </label>
+      </div>
+      <p class="text-text/50 text-sm px-3">fetches high-res icons from Google for shortcuts without a custom icon</p>
+    </section>
+
     <section class="w-full">
       <div class="flex gap-x-4 items-center flex-row">
         <h1 class="text-2xl">shortcuts</h1>
@@ -238,7 +266,7 @@
         />
         <input
           bind:value={newIcon}
-          placeholder="icon url"
+          placeholder="icon url (optional)"
           type="text"
           class="w-32 border-0 rounded-md p-2"
         />
@@ -256,6 +284,18 @@
           >
             {#if shortcut.icon}
               <img src={shortcut.icon} alt="" class="w-8 h-8 object-cover" />
+            {:else if $autoFavicon}
+              {@const faviconUrl = (() => {
+                try {
+                  const u = shortcut.url.startsWith("http") ? shortcut.url : "http://" + shortcut.url;
+                  return `https://www.google.com/s2/favicons?domain=${new URL(u).hostname}&sz=128`;
+                } catch {
+                  return "";
+                }
+              })()}
+              {#if faviconUrl}
+                <img src={faviconUrl} alt="" class="w-8 h-8 object-cover" />
+              {/if}
             {/if}
             <p title={shortcut.url}>{shortcut.title}</p>
             <button

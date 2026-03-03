@@ -100,6 +100,26 @@ if (typeof window !== "undefined") {
   });
 }
 
+// init auto favicon
+const getInitialAutoFaviconValue = () => {
+  if (typeof window !== "undefined") {
+    const stored = localStorage.getItem("autoFavicon");
+    if (stored === "true") {
+      return true;
+    }
+  }
+  return false;
+};
+
+export const autoFavicon = writable(getInitialAutoFaviconValue());
+
+// auto favicon localstorage
+if (typeof window !== "undefined") {
+  autoFavicon.subscribe((value) => {
+    localStorage.setItem("autoFavicon", String(value));
+  });
+}
+
 //init title text
 const getInitialTitleTextValue = () => {
   if (typeof window !== "undefined") {
