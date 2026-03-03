@@ -45,7 +45,9 @@
     <meta property="twitter:description" content="a startpage for unduck" />
     <meta property="twitter:image" content="https://start.gs0.me/assets/card.webp" />
 
-    <link rel="icon" href={favicon} />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="icon" href={favicon} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>search</title>
 </svelte:head>
 
