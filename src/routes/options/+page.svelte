@@ -147,7 +147,7 @@
       <section>
         <div class="flex gap-x-4 items-center flex-row">
           <h1 class="text-2xl">title text</h1>
-          <i class="opacity-50">max. 48 characters, $L = logo</i>
+          <i class="text-text/50 text-sm">max. 48 characters, $L = logo</i>
         </div>
         <div class="flex p-3 gap-x-4">
           <input
@@ -241,7 +241,9 @@
           <span class:underline={$autoFavicon === false}>off</span>
         </label>
       </div>
-      <p class="text-text/50 text-sm px-3">fetches high-res icons from Google for shortcuts without a custom icon</p>
+      <p class="text-text/50 text-sm italic px-3">
+        fetches high-res icons from Google for shortcuts without a custom icon
+      </p>
     </section>
 
     <section class="w-full">
@@ -287,7 +289,9 @@
             {:else if $autoFavicon}
               {@const faviconUrl = (() => {
                 try {
-                  const u = shortcut.url.startsWith("http") ? shortcut.url : "http://" + shortcut.url;
+                  const u = shortcut.url.startsWith("http")
+                    ? shortcut.url
+                    : "http://" + shortcut.url;
                   return `https://www.google.com/s2/favicons?domain=${new URL(u).hostname}&sz=128`;
                 } catch {
                   return "";
