@@ -15,7 +15,7 @@
   - [ ] Custom colors, bg image, etc
 - [x] Search suggestions
 - [x] Add shortcuts (bookmarks)
-  - [ ] Get favicons for shortcuts
+  - [x] Get favicons for shortcuts
 - [x] Cool clock
   - [x] Custom title
   - [x] Different fonts
