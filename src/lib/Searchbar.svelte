@@ -3,6 +3,7 @@
   import { suggestionsVisible } from "$lib/stores/suggestions";
 
   let query = "";
+  let activeBangPrefix = "";
   let searchBtn;
   let suggestions: Array<{ phrase: string }> = [];
   let bangSuggestions: Array<{ t: string; s: string; d: string; c: string }> =
@@ -32,11 +33,11 @@
   };
 
   //duckduckgo.com/ac/?q=%q
-  const getSuggestions = async () => {
-    if (query.length > 2) {
+  const getSuggestions = async (q = query) => {
+    if (q.length > 2) {
       try {
         const response = await fetch(
-          `/api/suggestions?q=${encodeURIComponent(query)}`,
+          `/api/suggestions?q=${encodeURIComponent(q)}`,
         );
         const data = await response.json();
         data.splice(5);
@@ -88,12 +89,22 @@
       }}
       bind:value={query}
       on:input={() => {
-        if (isBangMode) {
+        const bangMode = /^!\S*$/.test(query);
+        if (bangMode) {
           suggestions = [];
           getBangSuggestions();
-        } else if ($useSuggestions) {
+        } else {
           bangSuggestions = [];
-          getSuggestions();
+          if ($useSuggestions) {
+            const afterBang = query.match(/^(!\S+)\s+([\s\S]+)$/);
+            if (afterBang) {
+              activeBangPrefix = afterBang[1];
+              getSuggestions(afterBang[2]);
+            } else {
+              activeBangPrefix = "";
+              getSuggestions(query);
+            }
+          }
         }
       }}
     />
@@ -122,19 +133,19 @@
         <span
           class="w-full px-3 cursor-pointer hover:bg-neutral-500/10"
           on:click={() => {
-            query = suggestion.phrase;
+            query = activeBangPrefix ? `${activeBangPrefix} ${suggestion.phrase}` : suggestion.phrase;
             search();
           }}
           on:keydown={(e) => {
             if (e.key === "Enter") {
-              query = suggestion.phrase;
+              query = activeBangPrefix ? `${activeBangPrefix} ${suggestion.phrase}` : suggestion.phrase;
               search();
             }
           }}
           role="button"
           tabindex="0"
         >
-          {suggestion.phrase}
+          {#if activeBangPrefix}<span class="text-text/40">{activeBangPrefix}&nbsp;</span>{/if}{suggestion.phrase}
         </span>
       {/each}
     </div>
