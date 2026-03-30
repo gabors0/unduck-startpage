@@ -31,6 +31,7 @@ unduck-startpage/
 │   ├── app.d.ts              # TypeScript ambient declarations
 │   ├── lib/
 │   │   ├── index.ts          # $lib barrel (currently empty)
+│   │   ├── bangSearch.ts     # Client-side bang search (lazy-loads /data/bangs.json)
 │   │   ├── assets/
 │   │   │   └── favicon.svg
 │   │   ├── Clock.svelte      # ASCII/basic clock display (uses figlet)
@@ -135,6 +136,28 @@ Theme is applied by setting `document.documentElement.setAttribute("data-theme",
 ### Search Suggestions API
 `GET /api/suggestions?q=<query>` — a server-side proxy that fetches from `https://duckduckgo.com/ac/?q=<query>`. The proxy exists to avoid CORS issues. Returns an array of `{ phrase: string }` objects. The client trims results to 5 (`data.splice(5)`).
 
+### Bang Suggestions
+When the input matches `/^!\S*$/` (i.e. the query is just a bang fragment with nothing after it), `Searchbar.svelte` enters **bang mode** and filters bangs entirely client-side via `src/lib/bangSearch.ts`.
+
+**Static data (`static/data/bangs.json`):**
+- Generated at build time by `scripts/generate-bangs.ts` (run via `npx tsx`) from `src/lib/data/bangs.ts`.
+- Contains only the fields needed for display: `{ t, s, d, c, r }` — drops `u` (URL template) and `sc` (subcategory).
+- `t` and `s` are pre-lowercased to avoid runtime string allocations.
+- ~1.1MB raw / ~220KB gzipped. Listed in `.gitignore`; regenerated on every `pnpm dev` and `pnpm build`.
+
+**Search module (`src/lib/bangSearch.ts`):**
+- Lazy-loads `/data/bangs.json` on the first bang keystroke; subsequent calls use the in-memory cache.
+- `loadPromise` deduplicates concurrent fetches (e.g. rapid typing before the first load completes).
+- `searchBangs(q)` implements the same three-tier matching as the old API: exact trigger → prefix match → site substring match, each tier sorted descending by `r` (popularity). Returns top 5.
+- After the initial fetch, filtering 13,569 entries takes <1ms — effectively instant.
+
+**Client (`Searchbar.svelte`):**
+- Bang mode is detected reactively: `$: isBangMode = /^!\S*$/.test(query)`.
+- On input, if bang mode is active, normal suggestions are cleared and `getBangSuggestions()` is called; it calls `searchBangs(fragment)` and guards against stale results (checks `query` still matches before assigning).
+- The dropdown renders each result as `!{bang.t}` (accent monospace) followed by `- {bang.s}` (dimmed).
+- Clicking a bang suggestion sets the query to `!{bang.t} ` (with a trailing space) so the user can immediately type their search term; it does **not** submit the search.
+- When the query has a bang prefix followed by a space and more text (e.g. `!g foo`), normal suggestions are fetched for the text after the bang (`foo`), and the bang prefix is prepended (dimmed) in the dropdown. Clicking a suggestion preserves the bang prefix and fires the search.
+
 ### Shortcuts
 - Stored as an array of `{ title: string, url: string, icon: string }` in `localStorage` under key `"shortcuts"`
 - Max 14 shortcuts enforced in the options UI
@@ -187,6 +210,6 @@ The header (in `+layout.svelte`) has three icon links: `/` (home/search), `/them
 
 - [ ] Custom colors, background image support
 - [ ] Favicon auto-fetching for shortcuts
-- [ ] Bang suggestions/display in the search bar
+- [x] Bang suggestions/display in the search bar
 - [ ] Weather widget
 - [ ] Self-hosted search (not relying on unduck.link)

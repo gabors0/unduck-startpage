@@ -1,6 +1,7 @@
 <script lang="ts">
   import { selectedBang, useSuggestions } from "$lib/stores/options";
   import { suggestionsVisible } from "$lib/stores/suggestions";
+  import { searchBangs } from "$lib/bangSearch";
 
   let query = "";
   let activeBangPrefix = "";
@@ -52,15 +53,14 @@
   };
 
   const getBangSuggestions = async () => {
-    const fragment = query.slice(1); // strip leading '!'
-    if (query.length >= 2) {
+    const currentQuery = query;
+    const fragment = currentQuery.slice(1); // strip leading '!'
+    if (currentQuery.length >= 2) {
       try {
-        const response = await fetch(
-          `/api/bangs?q=${encodeURIComponent(fragment)}`,
-        );
-        bangSuggestions = await response.json();
+        const results = await searchBangs(fragment);
+        if (query === currentQuery) bangSuggestions = results;
       } catch (error) {
-        console.error("Failed to fetch bang suggestions:", error);
+        console.error("Failed to search bangs:", error);
         bangSuggestions = [];
       }
     } else {
