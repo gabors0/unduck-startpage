@@ -4,7 +4,7 @@
 </script>
 
 <div class="flex flex-col md:h-screen py-16 md:p-0 items-center justify-center">
-  <i class="text-center opacity-50">more themes coming soon</i>
+  <!-- <i class="text-center opacity-50">more themes coming soon</i> -->
   <div class="grid grid-cols-1 md:grid-cols-3 gap-3 p-3">
     <section>
       <!-- default -->
